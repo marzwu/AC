@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gizwits.framework.widget.SlidingMenu android:id="@id/mView" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <include layout="@layout/activity_slibbar" />
+        <RelativeLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/main_layout" android:background="@drawable/liang_bg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/rlHeader" android:background="@drawable/home_top_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_alignParentTop="true">
+                <ImageView android:id="@id/ivMenu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/icon_menu" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <TextView android:textSize="22.0sp" android:textColor="@android:color/white" android:id="@id/tvTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="空气净化器" android:layout_centerInParent="true" />
+                <ImageView android:id="@id/ivPower" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/icon_power" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <RelativeLayout android:gravity="center" android:id="@id/rlAlarmTips" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/tvTitle" android:layout_centerInParent="true" android:layout_centerVertical="true">
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fault_tips" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+                    <TextView android:textSize="18.0sp" android:textColor="#ff006cff" android:id="@id/tvAlarmTipsCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <HorizontalScrollView android:id="@id/wether_scrollview" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:clickable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_below="@id/rlHeader">
+                <ImageView android:id="@id/wether_bg" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            </HorizontalScrollView>
+            <Button android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rlHeader" />
+            <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="-20.0dip" android:layout_below="@id/rlHeader">
+                <TextView android:textSize="25.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/tips_tv" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="室内空气质量" android:layout_alignParentTop="true" />
+                <TextView android:textSize="130.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/homeQualityResult_tv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="良" android:layout_below="@id/tips_tv" />
+                <RelativeLayout android:id="@id/homeQualityResult_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="60.0dip" android:layout_marginRight="60.0dip" android:layout_below="@id/homeQualityResult_tv">
+                    <ImageView android:id="@id/homeQualityResult_iv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/instructions_bg" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+                    <ImageView android:id="@id/homeQualityTipArrow_iv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:src="@drawable/instructions_pointer" android:layout_alignBottom="@id/homeQualityResult_iv" android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/status_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="60.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="60.0dip" android:layout_weight="1.0" android:layout_below="@id/homeQualityResult_layout">
+                    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <ImageView android:id="@id/plasama_iv" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/anion_not_select" android:layout_weight="1.0" />
+                        <ImageView android:id="@id/childLock_iv" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/lock_not_select" android:layout_weight="1.0" />
+                        <ImageView android:id="@id/qualityLight_iv" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/quality_not_select" android:layout_weight="1.0" />
+                    </LinearLayout>
+                    <ImageView android:gravity="center" android:orientation="horizontal" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" />
+                    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                            <TextView android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="室外空气质量" />
+                            <TextView android:textColor="@color/white" android:id="@id/outdoorQuality_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="差" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                            <TextView android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PM 2.5" />
+                            <TextView android:textColor="@color/white" android:id="@id/pm25_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="90" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                            <TextView android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PM 10" />
+                            <TextView android:textColor="@color/white" android:id="@id/pm10_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/status_layout">
+                    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/speed_layout" android:layout_width="fill_parent" android:layout_height="136.0dip" android:layout_alignParentTop="true">
+                        <View android:layout_width="wrap_content" android:layout_height="1.0dip" android:layout_weight="1.0" />
+                        <ImageView android:id="@id/silent_iv" android:background="@drawable/icon_sleep_not_select" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerInside" />
+                        <View android:layout_width="wrap_content" android:layout_height="1.0dip" android:layout_weight="1.0" />
+                        <ImageView android:id="@id/standar_iv" android:background="@drawable/icon_standard_not_select" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerInside" />
+                        <View android:layout_width="wrap_content" android:layout_height="1.0dip" android:layout_weight="1.0" />
+                        <ImageView android:id="@id/strong_iv" android:background="@drawable/icon_strong_not_select" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerInside" />
+                        <View android:layout_width="wrap_content" android:layout_height="1.0dip" android:layout_weight="1.0" />
+                        <ImageView android:id="@id/auto_iv" android:background="@drawable/icon_intelligence_not_select" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerInside" />
+                        <View android:layout_width="wrap_content" android:layout_height="1.0dip" android:layout_weight="1.0" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/back_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+                <Button android:id="@id/back_btn" android:background="@color/black" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.6" />
+            </RelativeLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <RelativeLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="-7.0dip">
+                    <ImageView android:id="@id/bottom_push" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/bottom_1" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+                    <ImageView android:id="@id/push_iv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:src="@drawable/arrow_1" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/functions_layout" android:background="@color/white" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_marginBottom="-81.0dip">
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/plasmaO_ll" android:layout_width="80.0dip" android:layout_height="wrap_content">
+                        <ImageView android:id="@id/plasmaO_iv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_3" />
+                        <TextView android:id="@id/plasmaO_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="等离子" />
+                    </LinearLayout>
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/childLockO_ll" android:layout_width="80.0dip" android:layout_height="wrap_content">
+                        <ImageView android:id="@id/childLockO_iv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_2" />
+                        <TextView android:id="@id/childLockO_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" 童锁 " />
+                    </LinearLayout>
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/qualityLightO_ll" android:layout_width="80.0dip" android:layout_height="wrap_content">
+                        <ImageView android:id="@id/qualityLightO_iv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_1" />
+                        <TextView android:id="@id/qualityLightO_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="空气质量" />
+                    </LinearLayout>
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/timingOff_ll" android:layout_width="80.0dip" android:layout_height="wrap_content">
+                        <ImageView android:id="@id/timingOff_iv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_4" />
+                        <TextView android:id="@id/timingOff_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="定时关机" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <RelativeLayout android:id="@id/turnOff_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+                <Button android:background="@color/black" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.6" />
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:paddingTop="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                    <ImageView android:id="@id/turnOn_iv" android:layout_width="200.0dip" android:layout_height="200.0dip" android:src="@drawable/shutdown" />
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/timingOn_layout" android:background="@drawable/alarm" android:layout_width="78.0dip" android:layout_height="78.0dip" android:layout_marginTop="15.0dip">
+                        <ImageView android:id="@id/timingOn_iv" android:tag="1" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@drawable/alarm_icon" android:scaleType="fitCenter" />
+                        <TextView android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/timingOn_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="定时开机" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/disconnected_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+                <Button android:background="@color/black" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.6" />
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                    <TextView android:textColor="@color/white" android:id="@id/disconnected_tips_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="连接已经断开，不能控制。" />
+                    <Button android:textColor="@color/white" android:id="@id/reConn_btn" android:background="@drawable/bt_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="重新连接" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</com.gizwits.framework.widget.SlidingMenu>

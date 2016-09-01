@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16.0dip</dimen>
+    <dimen name="activity_vertical_margin">16.0dip</dimen>
+    <dimen name="top_bar_height">50.0dip</dimen>
+    <dimen name="left_icon">53.0dip</dimen>
+    <dimen name="title_text">23.0sp</dimen>
+    <dimen name="tip_text">26.0sp</dimen>
+    <dimen name="quality_text">135.0sp</dimen>
+    <dimen name="data_text">19.0dip</dimen>
+    <dimen name="btn_lay_height">105.0dip</dimen>
+    <dimen name="switch_width">60.0dip</dimen>
+    <dimen name="pm_width">205.0dip</dimen>
+    <dimen name="pm_magin_top">130.0dip</dimen>
+    <dimen name="pm_text">18.0dip</dimen>
+    <dimen name="temp_text">16.0dip</dimen>
+    <dimen name="temp_width">41.0dip</dimen>
+    <dimen name="temp_height">21.0dip</dimen>
+    <dimen name="bottom_btn_height">50.0dip</dimen>
+    <dimen name="btn_text">17.0dip</dimen>
+</resources>

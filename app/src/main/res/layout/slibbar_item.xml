@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0sp" android:textColor="@color/text_blue" android:gravity="center" android:id="@id/deviceName_tv" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/device_checked_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@drawable/slib_tick" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

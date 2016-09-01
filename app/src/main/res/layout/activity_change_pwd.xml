@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:fitsSystemWindows="true" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/rlTop" style="@style/TopLayout">
+        <ImageView android:id="@id/ivBack" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/return_icon" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="22.0sp" android:textColor="@android:color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/change_password" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rlTop">
+        <EditText android:id="@id/etPswOld" android:background="@drawable/login_input_box" android:layout_marginLeft="30.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="30.0dip" android:hint="@string/old_password" android:digits="@string/register_name_digits" android:inputType="textPassword" style="@style/EditTextTheme" />
+        <EditText android:id="@id/etPswNew" android:background="@drawable/login_input_box" android:layout_marginLeft="30.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="30.0dip" android:hint="@string/new_password" android:digits="@string/register_name_digits" android:inputType="textPassword" style="@style/EditTextTheme" />
+        <ToggleButton android:layout_gravity="right" android:id="@id/tbPswFlag" android:background="@drawable/toggle_selector" android:layout_width="50.0dip" android:layout_height="24.0dip" android:layout_marginRight="30.0dip" android:textOn="" android:textOff="" />
+        <Button android:id="@id/btnConfirm" android:layout_marginTop="10.0dip" android:text="@string/confirm" style="@style/ButtonBlue" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/rlResult" android:background="@color/transparent_half" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rlTop">
+        <TextView android:textSize="15.0sp" android:id="@id/tvResult" android:background="@color/white" android:paddingLeft="38.0dip" android:paddingTop="15.0dip" android:paddingRight="38.0dip" android:paddingBottom="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/change_success" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

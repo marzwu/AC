@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/time_set" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/wifiSSID_tv" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="@string/main_control_timing_turn_on" />
+    <TextView android:layout_width="300.0dip" android:layout_height="45.0dip" android:layout_weight="1.0" />
+    <RelativeLayout android:layout_width="300.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <com.gizwits.framework.widget.WheelView android:gravity="center_horizontal" android:id="@id/wheel_view_timing" android:layout_width="150.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:layout_width="300.0dip" android:layout_height="50.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:layout_gravity="bottom" android:layout_width="300.0dip" android:layout_height="45.0dip">
+        <Button android:textSize="18.0sp" android:textColor="#ff00ca5b" android:id="@id/cancel_btn" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancel" android:layout_weight="1.0" />
+        <Button android:textSize="18.0sp" android:textColor="#ff00ca5b" android:id="@id/confi_btn" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/confirm" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

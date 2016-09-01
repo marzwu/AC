@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/rlTop" style="@style/TopLayout">
+        <ImageView android:id="@id/ivBack" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/return_icon" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="22.0sp" android:textColor="@android:color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/title_alarm_list" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ListView android:id="@id/lvList" android:scrollbars="none" android:fadingEdgeLength="0.0sp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:drawSelectorOnTop="false" android:dividerHeight="1.0dip" android:layout_above="@id/btnCall" android:layout_below="@id/rlTop" />
+    <Button android:id="@id/btnCall" android:layout_margin="30.0dip" android:text="@string/btn_call" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/ButtonBlue" />
+</RelativeLayout>

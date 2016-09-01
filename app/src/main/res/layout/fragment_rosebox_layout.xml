@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/roseCircleSeekbar_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <com.gizwits.framework.views.RoseBoxSeekBarView android:id="@id/roseCircleSeekbar" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <LinearLayout android:gravity="bottom|center" android:id="@id/tips_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="20.0dip" android:layout_above="@id/roseCircleSeekbar_layout">
+        <ImageView android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/rb_icon_statu" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="滤网状态：" />
+        <TextView android:textSize="36.0sp" android:textColor="@color/black" android:id="@id/statues" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="获取中" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="bottom" android:id="@id/bottomLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginRight="50.0dip" android:layout_marginBottom="30.0dip" android:layout_alignParentBottom="true">
+        <Button android:textColor="@color/white" android:id="@id/reset_btn" android:background="@drawable/bt_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="滤网复位" />
+    </LinearLayout>
+</RelativeLayout>

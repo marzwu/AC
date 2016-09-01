@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/login_bg" android:fitsSystemWindows="true" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="1.0dip" android:layout_height="0.0dip" android:layout_weight="3.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="10.0dip" android:layout_weight="7.0">
+        <EditText android:id="@id/etName" android:paddingLeft="3.0dip" android:layout_marginLeft="50.0dip" android:layout_marginRight="50.0dip" android:hint="@string/login_name_hint" android:drawableLeft="@drawable/login_icon_name" style="@style/EditTextTheme" />
+        <EditText android:id="@id/etPsw" android:paddingLeft="3.0dip" android:layout_marginLeft="50.0dip" android:layout_marginRight="50.0dip" android:hint="@string/password" android:drawableLeft="@drawable/login_icon_key" android:inputType="textPassword" style="@style/EditTextTheme" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff00ca5b" android:layout_gravity="right" android:id="@id/tvForgot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginRight="50.0dip" android:text="@string/login_forget_password" />
+        <Button android:textColor="@android:color/white" android:layout_gravity="center_horizontal" android:id="@id/btnLogin" android:background="@drawable/login_bt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="50.0dip" android:text="@string/login" />
+        <Button android:textColor="@android:color/white" android:layout_gravity="bottom|center" android:id="@id/btnRegister" android:background="@drawable/login_bt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="50.0dip" android:text="@string/register" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:fitsSystemWindows="true" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/rlTop" android:layout_alignParentTop="true" style="@style/TopLayout">
+        <ImageView android:id="@id/ivBack" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/return_icon" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/ivStep" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/step_search" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="top" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_above="@id/bottomLayout" android:layout_below="@id/rlTop">
+        <TextView android:textSize="18.0sp" android:textColor="@android:color/darker_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/search_device_already_configure" />
+        <LinearLayout android:background="@android:color/darker_gray" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <ListView android:id="@id/lvDevices" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@android:color/darker_gray" android:dividerHeight="1.0dip" />
+        <TextView android:textSize="14.0sp" android:textColor="@android:color/holo_blue_light" android:gravity="center" android:layout_gravity="center" android:id="@id/tvTips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:text="@string/search_device_tips1" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bottomLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <Button android:textSize="14.0sp" android:id="@id/btnAddQR" android:visibility="visible" android:text="@string/search_device_configure_qr_code" style="@style/ButtonBlue" />
+        <Button android:textSize="14.0sp" android:id="@id/btnAddGokit" android:layout_margin="10.0dip" android:text="我要配置空气净化器" style="@style/ButtonBlue" />
+    </LinearLayout>
+</RelativeLayout>
