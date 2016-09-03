@@ -259,7 +259,7 @@ public class SmartLinkManipulator {
                 e4.printStackTrace();
             }
             int length = (str.length() + 256) + 76;
-            for (i3 = 1; i3 <= 3 && this.isConnecting; i3++) {
+            for (int i3 = 1; i3 <= 3 && this.isConnecting; i3++) {
                 this.mConfigBroadUdp.send(getBytes(length));
                 if (i3 < 3) {
                     try {
@@ -279,7 +279,7 @@ public class SmartLinkManipulator {
     }
 
     private String getBroadCast(Context context) {
-        WifiManager wifiManager = (WifiManager) context.getSystemService("wifi");
+        WifiManager wifiManager = (WifiManager) context.getSystemService(context.WIFI_SERVICE);
         return wifiManager != null ? Formatter.formatIpAddress(wifiManager.getDhcpInfo().gateway | ViewCompat.MEASURED_STATE_MASK) : null;
     }
 

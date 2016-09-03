@@ -59,7 +59,8 @@ public class DownloadService extends Service {
                         DownloadService.this.mNotification.contentView = null;
                         Intent intent = new Intent(DownloadService.this.mContext, DeviceListActivity.class);
                         intent.putExtra("completed", "yes");
-                        DownloadService.this.mNotification.setLatestEventInfo(DownloadService.this.mContext, "下载完成", "文件已下载完毕", PendingIntent.getActivity(DownloadService.this.mContext, 0, intent, 134217728));
+                        DownloadService.this.mNotification.setLatestEventInfo(DownloadService.this.mContext, "下载完成", "文件已下载完毕",
+                                PendingIntent.getActivity(DownloadService.this.mContext, 0, intent, PendingIntent.FLAG_ONE_SHOT));
                         DownloadService.this.serviceIsDestroy = true;
                         DownloadService.this.stopSelf();
                     }
@@ -201,7 +202,7 @@ public class DownloadService extends Service {
     public void onCreate() {
         super.onCreate();
         this.binder = new DownloadBinder();
-        this.mNotificationManager = (NotificationManager) getSystemService("notification");
+        this.mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         this.app = (XpgApplication) getApplication();
         System.out.println("onCreate----");
     }

@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -87,7 +87,7 @@ public class RefreshableListView extends ListView {
     }
 
     private void initialize() {
-        this.mHeaderContainer = ((LayoutInflater) getContext().getSystemService("layout_inflater")).inflate(R.layout.messagelist_head, null);
+        this.mHeaderContainer = ((LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.messagelist_head, null);
         this.mHeaderView = this.mHeaderContainer.findViewById(R.id.refreshable_list_header);
         this.mArrow = (ImageView) this.mHeaderContainer.findViewById(R.id.refreshable_list_arrow);
         this.mProgress = (ProgressBar) this.mHeaderContainer.findViewById(R.id.refreshable_list_progress);
@@ -111,13 +111,13 @@ public class RefreshableListView extends ListView {
 
     private void setHeaderHeight(int i) {
         if (i <= 1) {
-            this.mHeaderView.setVisibility(8);
+            this.mHeaderView.setVisibility(View.GONE);
         } else {
-            this.mHeaderView.setVisibility(0);
+            this.mHeaderView.setVisibility(View.VISIBLE);
         }
-        LayoutParams layoutParams = (AbsListView.LayoutParams) this.mHeaderContainer.getLayoutParams();
+        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) this.mHeaderContainer.getLayoutParams();
         if (layoutParams == null) {
-            layoutParams = new AbsListView.LayoutParams(-1, -2);
+            layoutParams = new ViewGroup.MarginLayoutParams(-1, -2);
         }
         layoutParams.height = i;
         this.mHeaderContainer.setLayoutParams(layoutParams);
@@ -143,8 +143,8 @@ public class RefreshableListView extends ListView {
     }
 
     private void startRefreshing() {
-        this.mArrow.setVisibility(4);
-        this.mProgress.setVisibility(0);
+        this.mArrow.setVisibility(View.INVISIBLE);
+        this.mProgress.setVisibility(View.VISIBLE);
         this.mText.setText("加载...");
         this.mIsRefreshing = true;
         if (this.mListener != null) {
@@ -153,8 +153,8 @@ public class RefreshableListView extends ListView {
     }
 
     public void completeRefreshing() {
-        this.mProgress.setVisibility(4);
-        this.mArrow.setVisibility(0);
+        this.mProgress.setVisibility(View.INVISIBLE);
+        this.mArrow.setVisibility(View.VISIBLE);
         this.mHandler.sendMessage(this.mHandler.obtainMessage(1, this.mHeaderHeight, 0));
         this.mIsRefreshing = false;
         invalidateViews();

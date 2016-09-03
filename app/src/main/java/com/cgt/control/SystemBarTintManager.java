@@ -10,12 +10,16 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+
+import com.uh.all.airpurifier.R;
 
 import java.lang.reflect.Method;
 
@@ -201,25 +205,25 @@ public class SystemBarTintManager {
     }
 
     private void setupNavBarView(Context context, ViewGroup viewGroup) {
-        ViewGroup.LayoutParams layoutParams;
+        LinearLayout.LayoutParams layoutParams;
         this.mNavBarTintView = new View(context);
         if (this.mConfig.isNavigationAtBottom()) {
-            layoutParams = new FrameLayout.LayoutParams(-1, this.mConfig.getNavigationBarHeight());
-            layoutParams.gravity = 80;
+            layoutParams = new LinearLayout.LayoutParams(-1, this.mConfig.getNavigationBarHeight());
+            layoutParams.gravity = Gravity.BOTTOM;
         } else {
-            layoutParams = new FrameLayout.LayoutParams(this.mConfig.getNavigationBarWidth(), -1);
-            layoutParams.gravity = 5;
+            layoutParams = new LinearLayout.LayoutParams(this.mConfig.getNavigationBarWidth(), -1);
+            layoutParams.gravity = Gravity.RIGHT;
         }
         this.mNavBarTintView.setLayoutParams(layoutParams);
-        this.mNavBarTintView.setBackgroundColor(DEFAULT_TINT_COLOR);
-        this.mNavBarTintView.setVisibility(8);
+        this.mNavBarTintView.setBackgroundColor(context.getResources().getColor(DEFAULT_TINT_COLOR));
+        this.mNavBarTintView.setVisibility(View.GONE);
         viewGroup.addView(this.mNavBarTintView);
     }
 
     private void setupStatusBarView(Context context, ViewGroup viewGroup) {
         this.mStatusBarTintView = new View(context);
-        ViewGroup.LayoutParams layoutParams = new FrameLayout.LayoutParams(-1, this.mConfig.getStatusBarHeight());
-        layoutParams.gravity = 48;
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(-1, this.mConfig.getStatusBarHeight());
+        layoutParams.gravity = Gravity.TOP;
         if (this.mNavBarAvailable && !this.mConfig.isNavigationAtBottom()) {
             layoutParams.rightMargin = this.mConfig.getNavigationBarWidth();
         }

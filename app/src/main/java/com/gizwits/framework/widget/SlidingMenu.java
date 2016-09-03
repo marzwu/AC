@@ -115,8 +115,8 @@ public class SlidingMenu extends HorizontalScrollView {
     protected Parcelable onSaveInstanceState() {
         Parcelable onSaveInstanceState = super.onSaveInstanceState();
         Parcelable bundle = new Bundle();
-        bundle.putBoolean("isOpen", this.isOpen);
-        bundle.putParcelable("android_state", onSaveInstanceState);
+        ((Bundle)bundle).putBoolean("isOpen", this.isOpen);
+        ((Bundle)bundle).putParcelable("android_state", onSaveInstanceState);
         return bundle;
     }
 

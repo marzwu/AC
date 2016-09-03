@@ -433,7 +433,7 @@ public class XPGWifiSDK {
                 List arrayList2 = new ArrayList();
                 JSONArray groupConfigJson = XPGWifiGroup.getGroupConfigJson(str);
                 while (i < groupConfigJson.length()) {
-                    str3 = groupConfigJson.getJSONObject(i).getString("productKey");
+                    String str3 = groupConfigJson.getJSONObject(i).getString("productKey");
                     if (strArr == null || arrayList.contains(str3)) {
                         JSONObject jSONObject = groupConfigJson.getJSONObject(i);
                         jSONObject.put("uid", str);

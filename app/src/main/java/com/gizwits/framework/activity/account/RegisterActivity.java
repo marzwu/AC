@@ -107,6 +107,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
     Timer timer;
     private TextView tvPhoneSwitch;
     private TextView tvTips;
+    private Message message;
 
     private enum handler_key {
         TICK_TIME,

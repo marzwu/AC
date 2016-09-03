@@ -148,7 +148,7 @@ public class XPGWifiGroup {
     public void addDevice(String str, String str2) {
         if (this.groupJson != null) {
             try {
-                Object jSONArray = new JSONArray();
+                JSONArray jSONArray = new JSONArray();
                 JSONObject jSONObject = new JSONObject();
                 jSONObject.put("did", str);
                 jSONObject.put("sdid", str2);
