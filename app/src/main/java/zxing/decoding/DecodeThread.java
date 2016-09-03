@@ -2,14 +2,17 @@ package zxing.decoding;
 
 import android.os.Handler;
 import android.os.Looper;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+
 import zxing.CaptureActivity;
 
 public class DecodeThread extends Thread {

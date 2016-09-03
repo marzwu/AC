@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
+
 import com.xpg.common.useful.StringUtils;
 
 public class IntentUtils {

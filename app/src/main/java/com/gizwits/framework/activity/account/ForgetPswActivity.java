@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
 import com.cgt.control.ActivityManager;
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.widget.MyInputFilter;
@@ -27,6 +28,7 @@ import com.uh.all.airpurifier.R;
 import com.xpg.common.useful.NetworkUtils;
 import com.xpg.common.useful.StringUtils;
 import com.xpg.ui.utils.ToastUtils;
+
 import java.util.Timer;
 import java.util.TimerTask;
 

@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.gizwits.airpurifier.activity.advanced.AdvancedActivity;
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.activity.device.DeviceListActivity;
@@ -32,12 +33,14 @@ import com.uh.all.airpurifier.R;
 import com.xpg.common.system.IntentUtils;
 import com.xpg.common.useful.DateUtil;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class New_activity_control extends BaseActivity implements OnClickListener, OnTouchListener {
     private int GetStatueTimeOut = 30000;

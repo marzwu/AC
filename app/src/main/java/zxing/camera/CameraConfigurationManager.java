@@ -9,6 +9,7 @@ import android.hardware.Camera.Size;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

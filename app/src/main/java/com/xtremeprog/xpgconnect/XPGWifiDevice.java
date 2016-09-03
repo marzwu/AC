@@ -1,11 +1,13 @@
 package com.xtremeprog.xpgconnect;
 
 import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class XPGWifiDevice {
     public static String XPGWifiDeviceHardwareFirmwareIdKey = "firmwareId";

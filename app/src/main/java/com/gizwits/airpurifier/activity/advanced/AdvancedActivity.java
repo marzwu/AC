@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.config.JsonKeys;
 import com.gizwits.framework.entity.AdvanceType;
@@ -18,12 +19,14 @@ import com.gizwits.framework.entity.DeviceAlarm;
 import com.uh.all.airpurifier.R;
 import com.xpg.common.useful.DateUtil;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class AdvancedActivity extends BaseActivity implements OnClickListener {
     private static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$airpurifier$activity$advanced$AdvancedActivity$CurrentView;

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.cgt.control.ActivityManager;
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.activity.device.DeviceListActivity;

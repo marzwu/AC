@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.utils.DialogManager;
 import com.gizwits.framework.utils.StringUtils;
@@ -20,6 +21,7 @@ import com.uh.all.airpurifier.R;
 import com.xpg.common.useful.NetworkUtils;
 import com.xpg.ui.utils.ToastUtils;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
+
 import java.util.List;
 
 public class DeviceManageDetailActivity extends BaseActivity implements OnClickListener {

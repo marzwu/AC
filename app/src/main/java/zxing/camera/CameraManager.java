@@ -8,7 +8,9 @@ import android.hardware.Camera.Size;
 import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
+
 import java.io.IOException;
+
 import zxing.camera.open.OpenCameraInterface;
 
 public class CameraManager {

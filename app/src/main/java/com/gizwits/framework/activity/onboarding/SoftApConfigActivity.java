@@ -17,12 +17,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.activity.device.DeviceListActivity;
 import com.uh.all.airpurifier.R;
 import com.xpg.common.system.IntentUtils;
 import com.xpg.common.useful.NetworkUtils;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
+
 import java.util.Timer;
 import java.util.TimerTask;
 

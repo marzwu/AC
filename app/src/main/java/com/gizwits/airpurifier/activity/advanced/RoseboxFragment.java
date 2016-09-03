@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.gizwits.framework.utils.DialogManager;
 import com.gizwits.framework.views.RoseBoxSeekBarView;
 import com.uh.all.airpurifier.R;

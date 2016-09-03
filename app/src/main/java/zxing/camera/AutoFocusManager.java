@@ -8,7 +8,9 @@ import android.os.AsyncTask;
 import android.os.AsyncTask.Status;
 import android.os.Build.VERSION;
 import android.util.Log;
+
 import com.gizwits.framework.config.JsonKeys;
+
 import java.util.ArrayList;
 import java.util.Collection;
 

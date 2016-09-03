@@ -2,11 +2,13 @@ package com.gizwits.framework.sdk;
 
 import android.content.Context;
 import android.util.Log;
+
 import com.gizwits.framework.config.Configs;
 import com.gizwits.framework.config.JsonKeys;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
 import com.xtremeprog.xpgconnect.XPGWifiSDK;
 import com.xtremeprog.xpgconnect.XPGWifiSDK.XPGWifiConfigureMode;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 

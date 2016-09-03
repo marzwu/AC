@@ -1,6 +1,7 @@
 package com.gizwits.framework.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.gizwits.framework.sdk.CmdCenter;
 import com.gizwits.framework.sdk.SettingManager;
 import com.gizwits.framework.utils.Historys;
@@ -20,6 +22,7 @@ import com.xtremeprog.xpgconnect.XPGWifiDevice;
 import com.xtremeprog.xpgconnect.XPGWifiDeviceListener;
 import com.xtremeprog.xpgconnect.XPGWifiSDKListener;
 import com.xtremeprog.xpgconnect.XPGWifiSSID;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -119,7 +122,7 @@ public class BaseActivity extends Activity {
 
     private void hideSoftInput(IBinder iBinder) {
         if (iBinder != null) {
-            ((InputMethodManager) getSystemService("input_method")).hideSoftInputFromWindow(iBinder, 2);
+            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(iBinder, 2);
         }
     }
 
@@ -206,7 +209,7 @@ public class BaseActivity extends Activity {
             return;
         }
         this.isExit = true;
-        Toast.makeText(getApplicationContext(), getString(R.string.tip_exit), 0).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.tip_exit), Toast.LENGTH_SHORT).show();
         this.handler.sendEmptyMessageDelayed(0, 2000);
     }
 

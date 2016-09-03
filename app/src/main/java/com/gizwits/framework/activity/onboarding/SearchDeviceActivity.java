@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.cgt.control.ActivityManager;
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.activity.device.DeviceListActivity;
@@ -30,8 +31,10 @@ import com.uh.all.airpurifier.R;
 import com.xpg.common.system.IntentUtils;
 import com.xpg.common.useful.NetworkUtils;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import zxing.CaptureActivity;
 
 public class SearchDeviceActivity extends BaseActivity implements OnClickListener, OnItemClickListener {

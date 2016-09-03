@@ -2,6 +2,7 @@ package com.xtremeprog.xpgconnect;
 
 import android.support.v4.media.TransportMediator;
 import android.support.v4.view.MotionEventCompat;
+
 import java.io.UnsupportedEncodingException;
 
 public class XPGWifiBinary {

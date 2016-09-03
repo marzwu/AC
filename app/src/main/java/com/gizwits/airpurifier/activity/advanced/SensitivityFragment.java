@@ -13,7 +13,9 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+
 import com.uh.all.airpurifier.R;
+
 import java.lang.reflect.Method;
 
 public class SensitivityFragment extends Fragment {

@@ -17,10 +17,11 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.MeasureSpec;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
+
 import com.uh.all.airpurifier.R;
+
 import java.util.LinkedList;
 import java.util.List;
 

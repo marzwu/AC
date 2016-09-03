@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
 import com.gizwits.framework.activity.BaseActivity;
 import com.uh.all.airpurifier.R;
 import com.xpg.common.useful.NetworkUtils;

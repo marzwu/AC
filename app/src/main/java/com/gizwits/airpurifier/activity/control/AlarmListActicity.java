@@ -8,10 +8,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.adapter.AlarmListAdapter;
 import com.gizwits.framework.entity.DeviceAlarm;
 import com.uh.all.airpurifier.R;
+
 import java.util.ArrayList;
 
 public class AlarmListActicity extends BaseActivity implements OnClickListener {

@@ -4,13 +4,16 @@ import android.content.Context;
 import android.net.wifi.WifiManager;
 import android.provider.Settings.Secure;
 import android.util.Log;
+
 import com.xtremeprog.xpgconnect.SmartLinkManipulator.ConnectCallBack;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class XPGWifiSDK {
     protected static Context mContext;

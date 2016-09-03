@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
+
 import com.gizwits.framework.activity.BaseActivity;
 import com.uh.all.airpurifier.R;
 

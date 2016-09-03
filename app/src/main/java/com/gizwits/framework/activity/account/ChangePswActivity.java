@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
 import com.cgt.control.ActivityManager;
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.utils.DialogManager;

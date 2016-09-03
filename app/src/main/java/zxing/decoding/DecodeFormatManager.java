@@ -1,6 +1,7 @@
 package zxing.decoding;
 
 import com.google.zxing.BarcodeFormat;
+
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Set;

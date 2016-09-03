@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.MultiFormatReader;
@@ -16,9 +17,11 @@ import com.google.zxing.PlanarYUVLuminanceSource;
 import com.google.zxing.ReaderException;
 import com.google.zxing.common.HybridBinarizer;
 import com.uh.all.airpurifier.R;
+
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.Map;
+
 import zxing.CaptureActivity;
 
 public class DecodeHandler extends Handler {

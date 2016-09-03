@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.utils.DialogManager;
 import com.uh.all.airpurifier.R;

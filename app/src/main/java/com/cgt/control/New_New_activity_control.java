@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.gizwits.airpurifier.activity.advanced.AdvancedActivity;
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.activity.device.DeviceListActivity;
@@ -33,12 +34,14 @@ import com.uh.all.airpurifier.R;
 import com.xpg.common.system.IntentUtils;
 import com.xpg.common.useful.DateUtil;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class New_New_activity_control extends BaseActivity implements OnClickListener {
     Dialog FixDialog = null;
@@ -58,9 +61,9 @@ public class New_New_activity_control extends BaseActivity implements OnClickLis
     private ConcurrentHashMap<String, Object> deviceDataMap;
     private LinearLayout functions_layout;
     Handler handler = new Handler() {
-        private static /* synthetic */ int[] $SWITCH_TABLE$com$cgt$control$New_New_activity_control$handler_key;
+        private /*synthetic*/ static int[] $SWITCH_TABLE$com$cgt$control$New_New_activity_control$handler_key;
 
-        static /* synthetic */ int[] $SWITCH_TABLE$com$cgt$control$New_New_activity_control$handler_key() {
+        static /*synthetic*/ int[] $SWITCH_TABLE$com$cgt$control$New_New_activity_control$handler_key() {
             int[] iArr = $SWITCH_TABLE$com$cgt$control$New_New_activity_control$handler_key;
             if (iArr == null) {
                 iArr = new int[handler_key.values().length];

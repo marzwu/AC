@@ -2,6 +2,7 @@ package com.gizwits.framework.utils;
 
 import android.app.Activity;
 import android.os.Process;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

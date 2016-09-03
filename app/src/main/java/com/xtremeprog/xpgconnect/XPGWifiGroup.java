@@ -1,6 +1,11 @@
 package com.xtremeprog.xpgconnect;
 
 import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -8,9 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class XPGWifiGroup {
     public String gid;

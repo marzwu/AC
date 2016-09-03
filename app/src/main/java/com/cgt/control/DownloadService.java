@@ -12,10 +12,12 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.widget.RemoteViews;
+
 import com.gizwits.framework.XpgApplication;
 import com.gizwits.framework.activity.device.DeviceListActivity;
 import com.gizwits.framework.activity.device.DeviceListActivity.ICallbackResult;
 import com.uh.all.airpurifier.R;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.support.v4.util.LruCache;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

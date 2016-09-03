@@ -27,6 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.gizwits.airpurifier.activity.advanced.AdvancedActivity;
 import com.gizwits.framework.Interface.OnDialogOkClickListenner;
 import com.gizwits.framework.activity.BaseActivity;
@@ -51,12 +52,14 @@ import com.uh.all.airpurifier.R;
 import com.xpg.common.system.IntentUtils;
 import com.xpg.common.useful.DateUtil;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class AirPurActivity extends BaseActivity implements OnClickListener, OnTouchListener, SlidingMenuListener {
     private static SlidingMenu mView;
@@ -613,7 +616,7 @@ public class AirPurActivity extends BaseActivity implements OnClickListener, OnT
 
             public void onSuccess(JSONObject jSONObject) {
                 try {
-                    Log.e(JsonKeys.Air_Quality, jSONObject);
+                    Log.e(JsonKeys.Air_Quality, jSONObject.toString());
                     JSONObject jSONObject2 = jSONObject.getJSONObject("result");
                     AirPurActivity.this.pm25_tv.setText(jSONObject2.getString("pm2_5").split("\\.")[0]);
                     AirPurActivity.this.pm10_tv.setText(jSONObject2.getString("pm10").split("\\.")[0]);
@@ -644,7 +647,7 @@ public class AirPurActivity extends BaseActivity implements OnClickListener, OnT
             public void onSuccess(JSONObject jSONObject) {
                 try {
                     String[] split = jSONObject.getString("address").split("\\|");
-                    Log.e("city-json", jSONObject);
+                    Log.e("city-json", jSONObject.toString());
                     AirPurActivity.this.getPm(split[2]);
                 } catch (Exception e) {
                     e.printStackTrace();

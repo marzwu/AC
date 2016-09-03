@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
 import com.gizwits.framework.adapter.AlarmListAdapter;
 import com.gizwits.framework.entity.DeviceAlarm;
 import com.uh.all.airpurifier.R;
+
 import java.util.ArrayList;
 import java.util.List;
 

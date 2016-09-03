@@ -24,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ImageView;
+
 import com.cgt.control.ActivityManager;
 import com.cgt.control.Constant;
 import com.cgt.control.DownloadService;
@@ -42,13 +43,15 @@ import com.xpg.common.system.IntentUtils;
 import com.xpg.common.useful.NetworkUtils;
 import com.xpg.ui.utils.ToastUtils;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
-import java.util.ArrayList;
-import java.util.List;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DeviceListActivity extends BaseActivity implements OnClickListener, OnItemClickListener, OnItemLongClickListener {
     private static final String TAG = "DeviceListActivity";

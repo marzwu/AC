@@ -8,10 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+
 import com.gizwits.framework.utils.DensityUtil;
 import com.gizwits.framework.utils.StringUtils;
 import com.uh.all.airpurifier.R;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
+
 import java.util.List;
 
 public class MenuDeviceAdapter extends BaseAdapter {

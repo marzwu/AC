@@ -19,6 +19,7 @@ import android.support.v4.util.LruCache;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
+
 import com.gizwits.framework.utils.UIUtils;
 import com.uh.all.airpurifier.R;
 

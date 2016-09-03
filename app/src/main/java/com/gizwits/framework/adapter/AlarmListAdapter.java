@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import com.gizwits.framework.entity.DeviceAlarm;
 import com.uh.all.airpurifier.R;
+
 import java.util.List;
 
 public class AlarmListAdapter extends BaseAdapter {

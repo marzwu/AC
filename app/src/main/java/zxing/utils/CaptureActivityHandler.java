@@ -3,8 +3,10 @@ package zxing.utils;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+
 import com.google.zxing.Result;
 import com.uh.all.airpurifier.R;
+
 import zxing.CaptureActivity;
 import zxing.camera.CameraManager;
 import zxing.decoding.DecodeThread;

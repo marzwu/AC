@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+
 import com.gizwits.framework.utils.DensityUtil;
 import com.nineoldandroids.view.ViewHelper;
 
