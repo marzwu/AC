@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.gizwits.framework.sdk.SettingManager;
 import com.gizwits.framework.utils.StringUtils;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
 
 import java.util.ArrayList;

@@ -8,7 +8,7 @@ import com.cgt.control.ActivityManager;
 import com.gizwits.framework.activity.account.LoginActivity;
 import com.gizwits.framework.activity.device.DeviceListActivity;
 import com.gizwits.framework.utils.StringUtils;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xpg.common.system.IntentUtils;
 
 public class FlushActivity extends BaseActivity {

@@ -11,7 +11,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 
 import com.gizwits.framework.activity.BaseActivity;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 
 public class AboutActivity extends BaseActivity {
     private ImageView ivAbout;

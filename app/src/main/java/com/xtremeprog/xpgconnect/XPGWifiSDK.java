@@ -285,7 +285,7 @@ public class XPGWifiSDK {
         }
         try {
             JSONArray jSONArray;
-            Object obj;
+            Object obj = null;
             JSONArray groupConfigJson = XPGWifiGroup.getGroupConfigJson(str);
             if (groupConfigJson.length() == 0) {
                 jSONArray = new JSONArray();
@@ -353,7 +353,12 @@ public class XPGWifiSDK {
             mListener.didGetGroups(-20, null);
             return;
         }
-        JSONArray groupConfigJson = XPGWifiGroup.getGroupConfigJson(str);
+        JSONArray groupConfigJson = null;
+        try {
+            groupConfigJson = XPGWifiGroup.getGroupConfigJson(str);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         int i = 0;
         while (i < groupConfigJson.length()) {
             try {
@@ -487,7 +492,13 @@ public class XPGWifiSDK {
             mListener.didGetGroups(-20, null);
             return;
         }
-        JSONArray groupConfigJson = XPGWifiGroup.getGroupConfigJson(str);
+        JSONArray groupConfigJson = null;
+        try {
+            groupConfigJson = XPGWifiGroup.getGroupConfigJson(str);
+        } catch (JSONException e) {
+
+
+        }
         int i2 = 0;
         while (i2 < groupConfigJson.length()) {
             try {

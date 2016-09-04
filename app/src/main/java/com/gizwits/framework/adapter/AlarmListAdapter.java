@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.gizwits.framework.entity.DeviceAlarm;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 
 import java.util.List;
 

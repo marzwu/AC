@@ -16,7 +16,7 @@ import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.config.JsonKeys;
 import com.gizwits.framework.entity.AdvanceType;
 import com.gizwits.framework.entity.DeviceAlarm;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xpg.common.useful.DateUtil;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
 
@@ -40,40 +40,10 @@ public class AdvancedActivity extends BaseActivity implements OnClickListener {
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     Handler handler = new Handler() {
-        private static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$airpurifier$activity$advanced$AdvancedActivity$handler_key;
-
-        static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$airpurifier$activity$advanced$AdvancedActivity$handler_key() {
-            int[] iArr = $SWITCH_TABLE$com$gizwits$airpurifier$activity$advanced$AdvancedActivity$handler_key;
-            if (iArr == null) {
-                iArr = new int[handler_key.values().length];
-                try {
-                    iArr[handler_key.ALARM.ordinal()] = 2;
-                } catch (NoSuchFieldError e) {
-                }
-                try {
-                    iArr[handler_key.DISCONNECTED.ordinal()] = 3;
-                } catch (NoSuchFieldError e2) {
-                }
-                try {
-                    iArr[handler_key.GET_STATUE.ordinal()] = 5;
-                } catch (NoSuchFieldError e3) {
-                }
-                try {
-                    iArr[handler_key.RECEIVED.ordinal()] = 4;
-                } catch (NoSuchFieldError e4) {
-                }
-                try {
-                    iArr[handler_key.UPDATE_UI.ordinal()] = 1;
-                } catch (NoSuchFieldError e5) {
-                }
-                $SWITCH_TABLE$com$gizwits$airpurifier$activity$advanced$AdvancedActivity$handler_key = iArr;
-            }
-            return iArr;
-        }
 
         public void handleMessage(Message message) {
             super.handleMessage(message);
-            switch (AnonymousClass1.$SWITCH_TABLE$com$gizwits$airpurifier$activity$advanced$AdvancedActivity$handler_key()[handler_key.values()[message.what].ordinal()]) {
+            switch (message.what) {
                 case 1:
                     break;
                 case 2:

@@ -29,7 +29,7 @@ import com.gizwits.framework.entity.DeviceAlarm;
 import com.gizwits.framework.utils.DialogManager;
 import com.gizwits.framework.utils.DialogManager.OnTimingChosenListener;
 import com.gizwits.framework.utils.PxUtil;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xpg.common.system.IntentUtils;
 import com.xpg.common.useful.DateUtil;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
@@ -55,60 +55,9 @@ public class New_activity_control extends BaseActivity implements OnClickListene
     private ConcurrentHashMap<String, Object> deviceDataMap;
     private LinearLayout functions_layout;
     Handler handler = new Handler() {
-        private static /* synthetic */ int[] $SWITCH_TABLE$com$cgt$control$New_activity_control$handler_key;
-
-        static /* synthetic */ int[] $SWITCH_TABLE$com$cgt$control$New_activity_control$handler_key() {
-            int[] iArr = $SWITCH_TABLE$com$cgt$control$New_activity_control$handler_key;
-            if (iArr == null) {
-                iArr = new int[handler_key.values().length];
-                try {
-                    iArr[handler_key.ALARM.ordinal()] = 2;
-                } catch (NoSuchFieldError e) {
-                }
-                try {
-                    iArr[handler_key.DISCONNECTED.ordinal()] = 3;
-                } catch (NoSuchFieldError e2) {
-                }
-                try {
-                    iArr[handler_key.GET_STATUE.ordinal()] = 5;
-                } catch (NoSuchFieldError e3) {
-                }
-                try {
-                    iArr[handler_key.GET_STATUE_TIMEOUT.ordinal()] = 6;
-                } catch (NoSuchFieldError e4) {
-                }
-                try {
-                    iArr[handler_key.LOGIN_FAIL.ordinal()] = 9;
-                } catch (NoSuchFieldError e5) {
-                }
-                try {
-                    iArr[handler_key.LOGIN_START.ordinal()] = 7;
-                } catch (NoSuchFieldError e6) {
-                }
-                try {
-                    iArr[handler_key.LOGIN_SUCCESS.ordinal()] = 8;
-                } catch (NoSuchFieldError e7) {
-                }
-                try {
-                    iArr[handler_key.LOGIN_TIMEOUT.ordinal()] = 10;
-                } catch (NoSuchFieldError e8) {
-                }
-                try {
-                    iArr[handler_key.RECEIVED.ordinal()] = 4;
-                } catch (NoSuchFieldError e9) {
-                }
-                try {
-                    iArr[handler_key.UPDATE_UI.ordinal()] = 1;
-                } catch (NoSuchFieldError e10) {
-                }
-                $SWITCH_TABLE$com$cgt$control$New_activity_control$handler_key = iArr;
-            }
-            return iArr;
-        }
-
         public void handleMessage(Message message) {
             super.handleMessage(message);
-            switch (AnonymousClass2.$SWITCH_TABLE$com$cgt$control$New_activity_control$handler_key()[handler_key.values()[message.what].ordinal()]) {
+            switch (message.what) {
                 case 1:
                     if (New_activity_control.this.statuMap != null && New_activity_control.this.statuMap.size() > 0) {
                         New_activity_control.this.handler.removeMessages(handler_key.GET_STATUE_TIMEOUT.ordinal());
@@ -419,7 +368,7 @@ public class New_activity_control extends BaseActivity implements OnClickListene
     }
 
     private void setTipsLayoutVisiblity(boolean z, int i) {
-        this.rlAlarmTips.setVisibility(z ? 0 : 8);
+        this.rlAlarmTips.setVisibility(z ? View.VISIBLE : View.GONE);
         this.tvAlarmTipsCount.setText(new StringBuilder(String.valueOf(i)).toString());
     }
 
@@ -453,7 +402,7 @@ public class New_activity_control extends BaseActivity implements OnClickListene
     }
 
     public void bottomFucTrogg() {
-        this.push_iv.setVisibility(0);
+        this.push_iv.setVisibility(View.VISIBLE);
     }
 
     public void changeSpeedBg(int i) {
@@ -671,9 +620,9 @@ public class New_activity_control extends BaseActivity implements OnClickListene
 
     public void setSwitch(boolean z) {
         if (z) {
-            this.turnOff_layout.setVisibility(8);
+            this.turnOff_layout.setVisibility(View.GONE);
         } else {
-            this.turnOff_layout.setVisibility(0);
+            this.turnOff_layout.setVisibility(View.VISIBLE);
         }
     }
 
@@ -706,11 +655,11 @@ public class New_activity_control extends BaseActivity implements OnClickListene
         LayoutParams layoutParams = (LayoutParams) this.functions_layout.getLayoutParams();
         if (layoutParams.bottomMargin == 0) {
             layoutParams.bottomMargin = PxUtil.dip2px(this, -81.0f);
-            this.back_layout.setVisibility(8);
+            this.back_layout.setVisibility(View.GONE);
             this.push_iv.setImageResource(R.drawable.arrow_1);
         } else {
             layoutParams.bottomMargin = 0;
-            this.back_layout.setVisibility(0);
+            this.back_layout.setVisibility(View.VISIBLE);
             this.push_iv.setImageResource(R.drawable.arrow_2);
         }
         this.functions_layout.setLayoutParams(layoutParams);

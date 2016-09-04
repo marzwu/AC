@@ -4,82 +4,75 @@ import android.app.Activity;
 import android.os.Process;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Historys {
     private static List<Activity> activityList = null;
     private static Historys instance = null;
 
-    class AnonymousClass1 implements Runnable {
-        private final /* synthetic */ Activity val$activity;
-
-        AnonymousClass1(Activity activity) {
-            this.val$activity = activity;
-        }
-
-        public void run() {
-            Historys.activityList.add(this.val$activity);
-            Collection arrayList = new ArrayList();
-            int size = Historys.activityList.size();
-            for (int i = 0; i < size; i++) {
-                Activity activity = (Activity) Historys.activityList.get(i);
-                if (activity != null && activity.isFinishing()) {
-                    arrayList.add(activity);
-                }
-            }
-            Historys.activityList.removeAll(arrayList);
-        }
-    }
-
     public Historys() {
         activityList = new ArrayList();
     }
 
     public static void exit() {
-        if (activityList != null) {
-            int size = activityList.size();
-            for (int i = 0; i < size; i++) {
-                finish((Activity) activityList.get(i));
+        if (activityList == null) {
+            return;
+        }
+        int i = activityList.size();
+        for (int j = 0; ; j++) {
+            if (j >= i) {
+                activityList.clear();
+                Process.killProcess(Process.myPid());
+                System.exit(0);
+                return;
             }
-            activityList.clear();
-            Process.killProcess(Process.myPid());
-            System.exit(0);
+            finish((Activity) activityList.get(j));
         }
     }
 
-    private static void finish(Activity activity) {
-        if (activity != null) {
-            try {
-                activity.finish();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    private static void finish(Activity paramActivity) {
+        if (paramActivity == null) {
+            return;
+        }
+        try {
+            paramActivity.finish();
+            return;
+        } catch (Exception localException) {
+            localException.printStackTrace();
         }
     }
 
     private static Historys getInstance() {
         if (instance == null) {
-            synchronized (Historys.class) {
-                try {
-                    if (instance == null) {
-                        instance = new Historys();
-                    }
-                } catch (Throwable th) {
-                    while (true) {
-                        Class cls = Historys.class;
-                    }
-                }
-            }
         }
-        return instance;
+        try {
+            if (instance == null) {
+                instance = new Historys();
+            }
+            return instance;
+        } finally {
+        }
     }
 
-    public static void put(Activity activity) {
-        if (activityList == null) {
+    public static void put(final Activity activity) {
+        if (Historys.activityList == null) {
             getInstance();
         }
-        SystemResource.getExecutorService().execute(new AnonymousClass1(activity));
+        SystemResource.getExecutorService().execute(new Runnable() {
+
+            @Override
+            public void run() {
+                Historys.activityList.add(activity);
+                final ArrayList<Activity> list = new ArrayList<Activity>();
+                for (int size = Historys.activityList.size(), i = 0; i < size; ++i) {
+                    final Activity activity = Historys.activityList.get(i);
+                    if (activity != null && activity.isFinishing()) {
+                        list.add(activity);
+                    }
+                }
+                Historys.activityList.removeAll(list);
+            }
+        });
     }
 
     public static void recycle() {

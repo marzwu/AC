@@ -27,7 +27,8 @@ import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.activity.device.DeviceListActivity;
 import com.gizwits.framework.adapter.SearchListAdapter;
 import com.gizwits.framework.utils.DialogManager;
-import com.uh.all.airpurifier.R;
+import com.google.zxing.client.android.CaptureActivity;
+import com.marz.ac.v1.R;
 import com.xpg.common.system.IntentUtils;
 import com.xpg.common.useful.NetworkUtils;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
@@ -35,7 +36,6 @@ import com.xtremeprog.xpgconnect.XPGWifiDevice;
 import java.util.ArrayList;
 import java.util.List;
 
-import zxing.CaptureActivity;
 
 public class SearchDeviceActivity extends BaseActivity implements OnClickListener, OnItemClickListener {
     private SearchListAdapter adapter;
@@ -44,32 +44,10 @@ public class SearchDeviceActivity extends BaseActivity implements OnClickListene
     private Button btnAddQR;
     private List<XPGWifiDevice> deviceList;
     Handler handler = new Handler() {
-        private static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$framework$activity$onboarding$SearchDeviceActivity$handler_key;
-
-        static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$framework$activity$onboarding$SearchDeviceActivity$handler_key() {
-            int[] iArr = $SWITCH_TABLE$com$gizwits$framework$activity$onboarding$SearchDeviceActivity$handler_key;
-            if (iArr == null) {
-                iArr = new int[handler_key.values().length];
-                try {
-                    iArr[handler_key.CHANGE_SUCCESS.ordinal()] = 3;
-                } catch (NoSuchFieldError e) {
-                }
-                try {
-                    iArr[handler_key.FOUND_FINISH.ordinal()] = 2;
-                } catch (NoSuchFieldError e2) {
-                }
-                try {
-                    iArr[handler_key.FOUND_SUCCESS.ordinal()] = 1;
-                } catch (NoSuchFieldError e3) {
-                }
-                $SWITCH_TABLE$com$gizwits$framework$activity$onboarding$SearchDeviceActivity$handler_key = iArr;
-            }
-            return iArr;
-        }
 
         public void handleMessage(Message message) {
             super.handleMessage(message);
-            switch (AnonymousClass1.$SWITCH_TABLE$com$gizwits$framework$activity$onboarding$SearchDeviceActivity$handler_key()[handler_key.values()[message.what].ordinal()]) {
+            switch (message.what) {
                 case 1:
                     SearchDeviceActivity.this.adapter.notifyDataSetChanged();
                     return;

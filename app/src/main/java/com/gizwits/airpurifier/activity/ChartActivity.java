@@ -3,7 +3,7 @@ package com.gizwits.airpurifier.activity;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 
 public class ChartActivity extends Activity {
     protected void onCreate(Bundle bundle) {

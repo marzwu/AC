@@ -21,7 +21,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.gizwits.framework.utils.UIUtils;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 
 public class RoseBoxSeekBarView extends View {
     private static final String TAG = "RoseBoxSeekBarView";

@@ -111,7 +111,11 @@ public class XPGWifiDevice {
                 }
                 for (i = 0; ((long) i) < vector_GWifiReceiveInfo2.size(); i++) {
                     Log.i(vector_GWifiReceiveInfo2.get(i).getName(), new StringBuilder(String.valueOf(vector_GWifiReceiveInfo2.get(i).getValue())).toString());
-                    jSONObject2.put(vector_GWifiReceiveInfo2.get(i).getName(), vector_GWifiReceiveInfo2.get(i).getValue());
+                    try {
+                        jSONObject2.put(vector_GWifiReceiveInfo2.get(i).getName(), vector_GWifiReceiveInfo2.get(i).getValue());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if (vector_GWifiReceiveInfo2.size() > 0) {
                     concurrentHashMap.put("faults", jSONObject2.toString());
@@ -153,7 +157,11 @@ public class XPGWifiDevice {
                 }
                 for (i2 = 0; ((long) i2) < vector_GWifiReceiveInfo2.size(); i2++) {
                     Log.i(vector_GWifiReceiveInfo2.get(i2).getName(), new StringBuilder(String.valueOf(vector_GWifiReceiveInfo2.get(i2).getValue())).toString());
-                    jSONObject2.put(vector_GWifiReceiveInfo2.get(i2).getName(), vector_GWifiReceiveInfo2.get(i2).getValue());
+                    try {
+                        jSONObject2.put(vector_GWifiReceiveInfo2.get(i2).getName(), vector_GWifiReceiveInfo2.get(i2).getValue());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if (vector_GWifiReceiveInfo2.size() > 0) {
                     concurrentHashMap.put("faults", jSONObject2.toString());

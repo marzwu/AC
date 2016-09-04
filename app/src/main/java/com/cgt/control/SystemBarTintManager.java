@@ -16,10 +16,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-
-import com.uh.all.airpurifier.R;
 
 import java.lang.reflect.Method;
 

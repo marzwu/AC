@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.gizwits.framework.sdk.CmdCenter;
 import com.gizwits.framework.sdk.SettingManager;
 import com.gizwits.framework.utils.Historys;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
 import com.xtremeprog.xpgconnect.XPGWifiDeviceListener;
 import com.xtremeprog.xpgconnect.XPGWifiSDKListener;

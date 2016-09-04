@@ -13,7 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
 
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xpg.common.device.DensityUtils;
 
 public class CircularSeekBar extends View {

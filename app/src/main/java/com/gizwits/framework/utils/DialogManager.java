@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.gizwits.framework.widget.ArrayWheelAdapter;
 import com.gizwits.framework.widget.WheelView;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 
 public class DialogManager {
 
@@ -146,12 +146,6 @@ public class DialogManager {
         }
     }
 
-    class AnonymousClass1 extends Dialog {
-        AnonymousClass1(Context context, int i) {
-            super(context, i);
-        }
-    }
-
     class AnonymousClass20 implements OnClickListener {
         private final /* synthetic */ Dialog val$dialog;
 
@@ -175,12 +169,6 @@ public class DialogManager {
 
         public void onClick(View view) {
             DialogManager.dismissDialog(this.val$ctx, this.val$dialog);
-        }
-    }
-
-    class AnonymousClass3 extends Dialog {
-        AnonymousClass3(Context context, int i) {
-            super(context, i);
         }
     }
 
@@ -224,12 +212,6 @@ public class DialogManager {
         }
     }
 
-    class AnonymousClass8 extends Dialog {
-        AnonymousClass8(Context context, int i) {
-            super(context, i);
-        }
-    }
-
     class AnonymousClass9 extends Dialog {
         AnonymousClass9(Context context, int i) {
             super(context, i);
@@ -242,54 +224,64 @@ public class DialogManager {
         }
     }
 
-    public static Dialog getDeviceErrirDialog(Activity activity, String str, OnClickListener onClickListener) {
-        Dialog anonymousClass11 = new AnonymousClass11(activity, R.style.noBackgroundDialog);
+    public static Dialog getDeviceErrirDialog(final Activity activity, String str, OnClickListener onClickListener) {
+        final Dialog dialog = new Dialog(activity, R.style.noBackgroundDialog);
+
         View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_alarm_for_conditioner, null);
         Button button = (Button) inflate.findViewById(R.id.fault_left_btn);
         Button button2 = (Button) inflate.findViewById(R.id.fault_right_btn);
         ((TextView) inflate.findViewById(R.id.fault_content)).setText(str);
-        button.setOnClickListener(new AnonymousClass12(activity, anonymousClass11));
+        button.setOnClickListener(new OnClickListener() {
+            public void onClick(View view) {
+                DialogManager.dismissDialog(activity, dialog);
+            }
+        });
         button2.setOnClickListener(onClickListener);
-        anonymousClass11.requestWindowFeature(1);
-        anonymousClass11.setCanceledOnTouchOutside(false);
-        anonymousClass11.setCancelable(false);
-        anonymousClass11.setContentView(inflate);
-        return anonymousClass11;
+        dialog.requestWindowFeature(1);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(inflate);
+        return dialog;
     }
 
     public static Dialog getDisconnectDialog(Activity activity, OnClickListener onClickListener) {
-        Dialog anonymousClass3 = new AnonymousClass3(activity, R.style.noBackgroundDialog);
+        final Dialog dialog = new Dialog(activity, R.style.noBackgroundDialog);
         View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_disconnect, null);
         ((Button) inflate.findViewById(R.id.btn_confirm)).setOnClickListener(onClickListener);
-        anonymousClass3.requestWindowFeature(1);
-        anonymousClass3.setCanceledOnTouchOutside(false);
-        anonymousClass3.setCancelable(false);
-        anonymousClass3.setContentView(inflate);
-        return anonymousClass3;
+        dialog.requestWindowFeature(1);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(inflate);
+        return dialog;
     }
 
     public static Dialog getFixDialog(Activity activity, OnClickListener onClickListener) {
-        Dialog anonymousClass8 = new AnonymousClass8(activity, R.style.noBackgroundDialog);
+        final Dialog dialog = new Dialog(activity, R.style.noBackgroundDialog);
         View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_fix, null);
         ((Button) inflate.findViewById(R.id.btn_confirm)).setOnClickListener(onClickListener);
-        anonymousClass8.requestWindowFeature(1);
-        anonymousClass8.setCanceledOnTouchOutside(false);
-        anonymousClass8.setCancelable(false);
-        anonymousClass8.setContentView(inflate);
-        return anonymousClass8;
+        dialog.requestWindowFeature(1);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(inflate);
+        return dialog;
     }
 
-    public static Dialog getLogoutDialog(Activity activity, OnClickListener onClickListener) {
-        Dialog anonymousClass1 = new AnonymousClass1(activity, R.style.noBackgroundDialog);
+    public static Dialog getLogoutDialog(final Activity activity, OnClickListener onClickListener) {
+        final Dialog dialog = new Dialog(activity, R.style.noBackgroundDialog);
         View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_logout, null);
         Button button = (Button) inflate.findViewById(R.id.right_btn);
-        ((Button) inflate.findViewById(R.id.left_btn)).setOnClickListener(new AnonymousClass2(activity, anonymousClass1));
+        ((Button) inflate.findViewById(R.id.left_btn)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogManager.dismissDialog(activity, dialog);
+            }
+        });
         button.setOnClickListener(onClickListener);
-        anonymousClass1.requestWindowFeature(1);
-        anonymousClass1.setCanceledOnTouchOutside(false);
-        anonymousClass1.setCancelable(false);
-        anonymousClass1.setContentView(inflate);
-        return anonymousClass1;
+        dialog.requestWindowFeature(1);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(inflate);
+        return dialog;
     }
 
     public static Dialog getNoNetworkDialog(Context context) {
@@ -300,73 +292,93 @@ public class DialogManager {
         return dialog;
     }
 
-    public static Dialog getPowerOffDialog(Activity activity, OnClickListener onClickListener) {
-        Dialog anonymousClass6 = new AnonymousClass6(activity, R.style.noBackgroundDialog);
+    public static Dialog getPowerOffDialog(final Activity activity, OnClickListener onClickListener) {
+        final Dialog dialog = new Dialog(activity, R.style.noBackgroundDialog);
         View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_power_off, null);
         Button button = (Button) inflate.findViewById(R.id.right_btn);
-        ((Button) inflate.findViewById(R.id.left_btn)).setOnClickListener(new AnonymousClass7(activity, anonymousClass6));
+        ((Button) inflate.findViewById(R.id.left_btn)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogManager.dismissDialog(activity, dialog);
+            }
+        });
         button.setOnClickListener(onClickListener);
-        anonymousClass6.requestWindowFeature(1);
-        anonymousClass6.setCanceledOnTouchOutside(false);
-        anonymousClass6.setCancelable(false);
-        anonymousClass6.setContentView(inflate);
-        return anonymousClass6;
+        dialog.requestWindowFeature(1);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(inflate);
+        return dialog;
     }
 
-    public static Dialog getPswChangeDialog(Activity activity, OnClickListener onClickListener) {
-        Dialog anonymousClass9 = new AnonymousClass9(activity, R.style.noBackgroundDialog);
+    public static Dialog getPswChangeDialog(final Activity activity, OnClickListener onClickListener) {
+        final Dialog dialog = new Dialog(activity, R.style.noBackgroundDialog);
         View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_psw_change, null);
         Button button = (Button) inflate.findViewById(R.id.right_btn);
-        ((Button) inflate.findViewById(R.id.left_btn)).setOnClickListener(new AnonymousClass10(activity, anonymousClass9));
+        ((Button) inflate.findViewById(R.id.left_btn)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogManager.dismissDialog(activity, dialog);
+            }
+        });
         button.setOnClickListener(onClickListener);
-        anonymousClass9.requestWindowFeature(1);
-        anonymousClass9.setCanceledOnTouchOutside(false);
-        anonymousClass9.setCancelable(false);
-        anonymousClass9.setContentView(inflate);
-        return anonymousClass9;
+        dialog.requestWindowFeature(1);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(inflate);
+        return dialog;
     }
 
     public static Dialog getResetRoseboxDialog(Activity activity, OnClickListener onClickListener) {
-        Dialog anonymousClass19 = new AnonymousClass19(activity, R.style.dialog_orderDetail);
+        final Dialog dialog = new Dialog(activity, R.style.dialog_orderDetail);
         View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_reset_rosebox, null);
         Button button = (Button) inflate.findViewById(R.id.right_btn);
-        ((Button) inflate.findViewById(R.id.left_btn)).setOnClickListener(new AnonymousClass20(anonymousClass19));
+        ((Button) inflate.findViewById(R.id.left_btn)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
         button.setOnClickListener(onClickListener);
-        anonymousClass19.requestWindowFeature(1);
-        anonymousClass19.setCanceledOnTouchOutside(false);
-        anonymousClass19.setCancelable(false);
-        anonymousClass19.setContentView(inflate);
-        return anonymousClass19;
+        dialog.requestWindowFeature(1);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(inflate);
+        return dialog;
     }
 
-    public static Dialog getUnbindDialog(Activity activity, OnClickListener onClickListener) {
-        Dialog anonymousClass4 = new AnonymousClass4(activity, R.style.noBackgroundDialog);
+    public static Dialog getUnbindDialog(final Activity activity, OnClickListener onClickListener) {
+        final Dialog dialog = new Dialog(activity, R.style.noBackgroundDialog);
         View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_unbind, null);
         Button button = (Button) inflate.findViewById(R.id.right_btn);
-        ((Button) inflate.findViewById(R.id.left_btn)).setOnClickListener(new AnonymousClass5(activity, anonymousClass4));
+        ((Button) inflate.findViewById(R.id.left_btn)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogManager.dismissDialog(activity, dialog);
+            }
+        });
         button.setOnClickListener(onClickListener);
-        anonymousClass4.requestWindowFeature(1);
-        anonymousClass4.setCanceledOnTouchOutside(false);
-        anonymousClass4.setCancelable(false);
-        anonymousClass4.setContentView(inflate);
-        return anonymousClass4;
+        dialog.requestWindowFeature(1);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(inflate);
+        return dialog;
     }
 
-    public static Dialog getWheelSpeedDialog(Activity activity, OnTimingChosenListener onTimingChosenListener, String str, int i) {
+    public static Dialog getWheelSpeedDialog(final Activity activity, final OnTimingChosenListener onTimingChosenListener, String str, int i) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int i2 = displayMetrics.widthPixels;
         String[] strArr = new String[]{"  1 ", "  2 ", "  3 ", "  4 "};
-        int[] iArr = new int[4];
+        final int[] iArr = new int[4];
         iArr[1] = 1;
         iArr[2] = 2;
         iArr[3] = 3;
-        Dialog anonymousClass16 = new AnonymousClass16(activity, R.style.noBackgroundDialog);
+        final Dialog dialog = new Dialog(activity, R.style.noBackgroundDialog);
         View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_choose_timing_conditioner, null);
         ((TextView) inflate.findViewById(R.id.wifiSSID_tv)).setText(str);
         Button button = (Button) inflate.findViewById(R.id.confi_btn);
         Button button2 = (Button) inflate.findViewById(R.id.cancel_btn);
-        WheelView wheelView = (WheelView) inflate.findViewById(R.id.wheel_view_timing);
+        final WheelView wheelView = (WheelView) inflate.findViewById(R.id.wheel_view_timing);
         if (i2 <= 540) {
             wheelView.setTEXT_SIZE(30);
             wheelView.setADDITIONAL_ITEM_HEIGHT(60);
@@ -376,21 +388,32 @@ public class DialogManager {
         wheelView.setCyclic(true);
         wheelView.setLabel("档");
         wheelView.setCurrentItem(i);
-        button2.setOnClickListener(new AnonymousClass17(activity, anonymousClass16));
-        button.setOnClickListener(new AnonymousClass18(wheelView, onTimingChosenListener, iArr, activity, anonymousClass16));
-        anonymousClass16.requestWindowFeature(1);
-        anonymousClass16.setCanceledOnTouchOutside(false);
-        anonymousClass16.setCancelable(false);
-        anonymousClass16.setContentView(inflate);
-        return anonymousClass16;
+        button2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogManager.dismissDialog(activity, dialog);
+            }
+        });
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onTimingChosenListener.timingChosen(iArr[wheelView.getCurrentItem()]);
+                DialogManager.dismissDialog(activity, dialog);
+            }
+        });
+        dialog.requestWindowFeature(1);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(inflate);
+        return dialog;
     }
 
-    public static Dialog getWheelTimingDialog(Activity activity, OnTimingChosenListener onTimingChosenListener, String str, int i) {
+    public static Dialog getWheelTimingDialog(final Activity activity, final OnTimingChosenListener onTimingChosenListener, String str, int i) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int i2 = displayMetrics.widthPixels;
         String[] strArr = new String[]{"  1 ", "  2 ", "  3 ", "  4 ", "  5 ", "  6 ", "  7 ", "  8 ", "  9 ", "  10 ", "  11 ", "  12 ", "  13 ", "  14 ", "  15 ", "  16 ", "  17 ", "  18 ", "  19 ", "  20 ", "  21 ", "  22 ", "  23 ", "  24 ", "关闭"};
-        int[] iArr = new int[25];
+        final int[] iArr = new int[25];
         iArr[0] = 1;
         iArr[1] = 2;
         iArr[2] = 3;
@@ -415,12 +438,12 @@ public class DialogManager {
         iArr[21] = 22;
         iArr[22] = 23;
         iArr[23] = 24;
-        Dialog anonymousClass13 = new AnonymousClass13(activity, R.style.noBackgroundDialog);
+        final Dialog dialog = new Dialog(activity, R.style.noBackgroundDialog);
         View inflate = LayoutInflater.from(activity).inflate(R.layout.dialog_choose_timing_conditioner, null);
         ((TextView) inflate.findViewById(R.id.wifiSSID_tv)).setText(str);
         Button button = (Button) inflate.findViewById(R.id.confi_btn);
         Button button2 = (Button) inflate.findViewById(R.id.cancel_btn);
-        WheelView wheelView = (WheelView) inflate.findViewById(R.id.wheel_view_timing);
+        final WheelView wheelView = (WheelView) inflate.findViewById(R.id.wheel_view_timing);
         if (i2 <= 540) {
             wheelView.setTEXT_SIZE(30);
             wheelView.setADDITIONAL_ITEM_HEIGHT(60);
@@ -430,13 +453,24 @@ public class DialogManager {
         wheelView.setCyclic(true);
         wheelView.setLabel("小时");
         wheelView.setCurrentItem(i);
-        button2.setOnClickListener(new AnonymousClass14(activity, anonymousClass13));
-        button.setOnClickListener(new AnonymousClass15(wheelView, onTimingChosenListener, iArr, activity, anonymousClass13));
-        anonymousClass13.requestWindowFeature(1);
-        anonymousClass13.setCanceledOnTouchOutside(false);
-        anonymousClass13.setCancelable(false);
-        anonymousClass13.setContentView(inflate);
-        return anonymousClass13;
+        button2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogManager.dismissDialog(activity, dialog);
+            }
+        });
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onTimingChosenListener.timingChosen(iArr[wheelView.getCurrentItem()]);
+                DialogManager.dismissDialog(activity, dialog);
+            }
+        });
+        dialog.requestWindowFeature(1);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(inflate);
+        return dialog;
     }
 
     public static void showDialog(Context context, Dialog dialog) {

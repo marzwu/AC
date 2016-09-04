@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 import com.gizwits.framework.adapter.AlarmListAdapter;
 import com.gizwits.framework.entity.DeviceAlarm;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.cgt.control.ActivityManager;
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.activity.device.DeviceListActivity;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xpg.common.system.IntentUtils;
 import com.xpg.common.useful.NetworkUtils;
 import com.xpg.common.useful.StringUtils;
@@ -28,32 +28,10 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
     private EditText etName;
     private EditText etPsw;
     Handler handler = new Handler() {
-        private static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$framework$activity$account$LoginActivity$handler_key;
-
-        static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$framework$activity$account$LoginActivity$handler_key() {
-            int[] iArr = $SWITCH_TABLE$com$gizwits$framework$activity$account$LoginActivity$handler_key;
-            if (iArr == null) {
-                iArr = new int[handler_key.values().length];
-                try {
-                    iArr[handler_key.LOGIN_FAIL.ordinal()] = 2;
-                } catch (NoSuchFieldError e) {
-                }
-                try {
-                    iArr[handler_key.LOGIN_SUCCESS.ordinal()] = 1;
-                } catch (NoSuchFieldError e2) {
-                }
-                try {
-                    iArr[handler_key.LOGIN_TIMEOUT.ordinal()] = 3;
-                } catch (NoSuchFieldError e3) {
-                }
-                $SWITCH_TABLE$com$gizwits$framework$activity$account$LoginActivity$handler_key = iArr;
-            }
-            return iArr;
-        }
 
         public void handleMessage(Message message) {
             super.handleMessage(message);
-            switch (AnonymousClass1.$SWITCH_TABLE$com$gizwits$framework$activity$account$LoginActivity$handler_key()[handler_key.values()[message.what].ordinal()]) {
+            switch (message.what) {
                 case 1:
                     LoginActivity.this.handler.removeMessages(handler_key.LOGIN_TIMEOUT.ordinal());
                     Toast.makeText(LoginActivity.this, "登录成功", 0).show();
@@ -63,12 +41,12 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
                     return;
                 case 2:
                     LoginActivity.this.handler.removeMessages(handler_key.LOGIN_TIMEOUT.ordinal());
-                    Toast.makeText(LoginActivity.this, message.obj, 0).show();
+                    Toast.makeText(LoginActivity.this, (String)message.obj, Toast.LENGTH_SHORT).show();
                     LoginActivity.this.dialog.cancel();
                     return;
                 case 3:
                     LoginActivity.this.handler.removeMessages(handler_key.LOGIN_TIMEOUT.ordinal());
-                    Toast.makeText(LoginActivity.this, "登陆超时", 0).show();
+                    Toast.makeText(LoginActivity.this, "登陆超时", Toast.LENGTH_SHORT).show();
                     LoginActivity.this.dialog.cancel();
                     return;
                 default:

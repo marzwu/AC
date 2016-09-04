@@ -20,7 +20,7 @@ import android.widget.ToggleButton;
 
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.activity.device.DeviceListActivity;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xpg.common.system.IntentUtils;
 import com.xpg.common.useful.NetworkUtils;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
@@ -36,36 +36,10 @@ public class SoftApConfigActivity extends BaseActivity implements OnClickListene
     private Button btnRetry;
     private EditText etInputPsw;
     Handler handler = new Handler() {
-        private static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$framework$activity$onboarding$SoftApConfigActivity$handler_key;
-
-        static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$framework$activity$onboarding$SoftApConfigActivity$handler_key() {
-            int[] iArr = $SWITCH_TABLE$com$gizwits$framework$activity$onboarding$SoftApConfigActivity$handler_key;
-            if (iArr == null) {
-                iArr = new int[handler_key.values().length];
-                try {
-                    iArr[handler_key.CHANGE_WIFI.ordinal()] = 2;
-                } catch (NoSuchFieldError e) {
-                }
-                try {
-                    iArr[handler_key.CONFIG_FAILED.ordinal()] = 4;
-                } catch (NoSuchFieldError e2) {
-                }
-                try {
-                    iArr[handler_key.CONFIG_SUCCESS.ordinal()] = 3;
-                } catch (NoSuchFieldError e3) {
-                }
-                try {
-                    iArr[handler_key.TICK_TIME.ordinal()] = 1;
-                } catch (NoSuchFieldError e4) {
-                }
-                $SWITCH_TABLE$com$gizwits$framework$activity$onboarding$SoftApConfigActivity$handler_key = iArr;
-            }
-            return iArr;
-        }
 
         public void handleMessage(Message message) {
             super.handleMessage(message);
-            switch (AnonymousClass1.$SWITCH_TABLE$com$gizwits$framework$activity$onboarding$SoftApConfigActivity$handler_key()[handler_key.values()[message.what].ordinal()]) {
+            switch (message.what) {
                 case 1:
                     SoftApConfigActivity softApConfigActivity = SoftApConfigActivity.this;
                     softApConfigActivity.secondleft--;

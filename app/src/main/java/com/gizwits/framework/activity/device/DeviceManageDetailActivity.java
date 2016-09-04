@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.utils.DialogManager;
 import com.gizwits.framework.utils.StringUtils;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xpg.common.useful.NetworkUtils;
 import com.xpg.ui.utils.ToastUtils;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
@@ -28,40 +28,10 @@ public class DeviceManageDetailActivity extends BaseActivity implements OnClickL
     private Button btnDelDevice;
     private EditText etName;
     Handler handler = new Handler() {
-        private static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$framework$activity$device$DeviceManageDetailActivity$handler_key;
-
-        static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$framework$activity$device$DeviceManageDetailActivity$handler_key() {
-            int[] iArr = $SWITCH_TABLE$com$gizwits$framework$activity$device$DeviceManageDetailActivity$handler_key;
-            if (iArr == null) {
-                iArr = new int[handler_key.values().length];
-                try {
-                    iArr[handler_key.CHANGE_FAIL.ordinal()] = 2;
-                } catch (NoSuchFieldError e) {
-                }
-                try {
-                    iArr[handler_key.CHANGE_SUCCESS.ordinal()] = 1;
-                } catch (NoSuchFieldError e2) {
-                }
-                try {
-                    iArr[handler_key.DELETE_FAIL.ordinal()] = 4;
-                } catch (NoSuchFieldError e3) {
-                }
-                try {
-                    iArr[handler_key.DELETE_SUCCESS.ordinal()] = 3;
-                } catch (NoSuchFieldError e4) {
-                }
-                try {
-                    iArr[handler_key.GET_BOUND.ordinal()] = 5;
-                } catch (NoSuchFieldError e5) {
-                }
-                $SWITCH_TABLE$com$gizwits$framework$activity$device$DeviceManageDetailActivity$handler_key = iArr;
-            }
-            return iArr;
-        }
 
         public void handleMessage(Message message) {
             super.handleMessage(message);
-            switch (AnonymousClass1.$SWITCH_TABLE$com$gizwits$framework$activity$device$DeviceManageDetailActivity$handler_key()[handler_key.values()[message.what].ordinal()]) {
+            switch (message.what) {
                 case 1:
                     DialogManager.dismissDialog(DeviceManageDetailActivity.this, DeviceManageDetailActivity.this.progressDialog);
                     ToastUtils.showShort(DeviceManageDetailActivity.this, "修改成功！");

@@ -16,7 +16,7 @@ import android.widget.RemoteViews;
 import com.gizwits.framework.XpgApplication;
 import com.gizwits.framework.activity.device.DeviceListActivity;
 import com.gizwits.framework.activity.device.DeviceListActivity.ICallbackResult;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -55,12 +55,17 @@ public class DownloadService extends Service {
                         remoteViews.setProgressBar(R.id.progressbar, 100, i, false);
                     } else {
                         System.out.println("下载完毕!!!!!!!!!!!");
+
+                        Notification.Builder builder = new Notification.Builder(DownloadService.this.mContext);
+                        builder.setContentTitle("下载完成").setContentText("文件已下载完毕");
+                        DownloadService.this.mNotification = builder.getNotification();
                         DownloadService.this.mNotification.flags = 16;
                         DownloadService.this.mNotification.contentView = null;
                         Intent intent = new Intent(DownloadService.this.mContext, DeviceListActivity.class);
                         intent.putExtra("completed", "yes");
-                        DownloadService.this.mNotification.setLatestEventInfo(DownloadService.this.mContext, "下载完成", "文件已下载完毕",
-                                PendingIntent.getActivity(DownloadService.this.mContext, 0, intent, PendingIntent.FLAG_ONE_SHOT));
+//                        DownloadService.this.mNotification.setLatestEventInfo(DownloadService.this.mContext, "下载完成", "文件已下载完毕",
+//                                PendingIntent.getActivity(DownloadService.this.mContext, 0, intent, PendingIntent.FLAG_ONE_SHOT));
+
                         DownloadService.this.serviceIsDestroy = true;
                         DownloadService.this.stopSelf();
                     }

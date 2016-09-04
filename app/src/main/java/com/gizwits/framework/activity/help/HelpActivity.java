@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.gizwits.framework.activity.BaseActivity;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 
 public class HelpActivity extends BaseActivity implements OnClickListener {
     private Button AppHelp;

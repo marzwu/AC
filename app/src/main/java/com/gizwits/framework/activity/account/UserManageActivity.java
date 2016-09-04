@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.utils.DialogManager;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xpg.common.system.IntentUtils;
 import com.xpg.ui.utils.ToastUtils;
 

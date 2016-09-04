@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.gizwits.framework.utils.DialogManager;
 import com.gizwits.framework.views.RoseBoxSeekBarView;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 
 public class RoseboxFragment extends Fragment implements OnClickListener {
     private AdvancedActivity advancedActivity;

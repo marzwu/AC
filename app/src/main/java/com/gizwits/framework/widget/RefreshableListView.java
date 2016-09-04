@@ -1,3 +1,19 @@
+/*
+ * Copyright 2011 woozzu
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.gizwits.framework.widget;
 
 import android.content.Context;
@@ -12,7 +28,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,220 +35,282 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 
 public class RefreshableListView extends ListView {
-    private static final int HEADER_HEIGHT_DP = 62;
-    private static final int NORMAL = 1;
-    private static final int REFRESH = 0;
-    private ImageView mArrow = null;
-    private boolean mArrowUp = false;
-    private boolean mFlag = false;
-    private final Handler mHandler = new Handler() {
-        public void handleMessage(Message message) {
-            int access$0;
-            super.handleMessage(message);
-            switch (message.what) {
-                case 0:
-                    access$0 = RefreshableListView.this.mHeaderHeight;
-                    break;
-                case 1:
-                    access$0 = 0;
-                    break;
-                default:
-                    access$0 = 0;
-                    break;
-            }
-            if (message.arg1 >= access$0) {
-                RefreshableListView.this.setHeaderHeight(message.arg1);
-                access$0 = (message.arg1 - access$0) / 10;
-                if (access$0 == 0) {
-                    RefreshableListView.this.mHandler.sendMessage(RefreshableListView.this.mHandler.obtainMessage(message.what, message.arg1 - 1, 0));
-                } else {
-                    RefreshableListView.this.mHandler.sendMessage(RefreshableListView.this.mHandler.obtainMessage(message.what, message.arg1 - access$0, 0));
-                }
-            }
-        }
-    };
+
     private View mHeaderContainer = null;
-    private int mHeaderHeight = 0;
     private View mHeaderView = null;
-    private int mHistoricalTop = 0;
-    private float mHistoricalY = 0.0f;
-    private int mInitialHeight = 0;
-    private boolean mIsRefreshing = false;
-    private OnRefreshListener mListener = null;
+    private ImageView mArrow = null;
     private ProgressBar mProgress = null;
     private TextView mText = null;
-    private float mY = 0.0f;
+    private float mY = 0;
+    private float mHistoricalY = 0;
+    private int mHistoricalTop = 0;
+    private int mInitialHeight = 0;
+    private boolean mFlag = false;
+    private boolean mArrowUp = false;
+    private boolean mIsRefreshing = false;
+    private int mHeaderHeight = 0;
+    private OnRefreshListener mListener = null;
 
-    public interface OnRefreshListener {
-        void onRefresh(RefreshableListView refreshableListView);
-    }
+    private static final int REFRESH = 0;
+    private static final int NORMAL = 1;
+    private static final int HEADER_HEIGHT_DP = 62;
+    private static final String TAG = RefreshableListView.class.getSimpleName();
 
-    public RefreshableListView(Context context) {
+    public RefreshableListView(final Context context) {
         super(context);
         initialize();
     }
 
-    public RefreshableListView(Context context, AttributeSet attributeSet) {
-        super(context, attributeSet);
+    public RefreshableListView(final Context context, final AttributeSet attrs) {
+        super(context, attrs);
         initialize();
     }
 
-    public RefreshableListView(Context context, AttributeSet attributeSet, int i) {
-        super(context, attributeSet, i);
+    public RefreshableListView(final Context context, final AttributeSet attrs, final int defStyle) {
+        super(context, attrs, defStyle);
         initialize();
     }
 
-    private void initialize() {
-        this.mHeaderContainer = ((LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.messagelist_head, null);
-        this.mHeaderView = this.mHeaderContainer.findViewById(R.id.refreshable_list_header);
-        this.mArrow = (ImageView) this.mHeaderContainer.findViewById(R.id.refreshable_list_arrow);
-        this.mProgress = (ProgressBar) this.mHeaderContainer.findViewById(R.id.refreshable_list_progress);
-        this.mText = (TextView) this.mHeaderContainer.findViewById(R.id.refreshable_list_text);
-        addHeaderView(this.mHeaderContainer);
-        this.mHeaderHeight = (int) (62.0f * getContext().getResources().getDisplayMetrics().density);
-        setHeaderHeight(0);
-    }
-
-    private void rotateArrow() {
-        Drawable drawable = this.mArrow.getDrawable();
-        Bitmap createBitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Config.ARGB_8888);
-        Canvas canvas = new Canvas(createBitmap);
-        canvas.save();
-        canvas.rotate(180.0f, ((float) canvas.getWidth()) / 2.0f, ((float) canvas.getHeight()) / 2.0f);
-        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-        drawable.draw(canvas);
-        canvas.restore();
-        this.mArrow.setImageBitmap(createBitmap);
-    }
-
-    private void setHeaderHeight(int i) {
-        if (i <= 1) {
-            this.mHeaderView.setVisibility(View.GONE);
-        } else {
-            this.mHeaderView.setVisibility(View.VISIBLE);
-        }
-        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) this.mHeaderContainer.getLayoutParams();
-        if (layoutParams == null) {
-            layoutParams = new ViewGroup.MarginLayoutParams(-1, -2);
-        }
-        layoutParams.height = i;
-        this.mHeaderContainer.setLayoutParams(layoutParams);
-        layoutParams = (LinearLayout.LayoutParams) this.mHeaderView.getLayoutParams();
-        if (layoutParams == null) {
-            layoutParams = new LinearLayout.LayoutParams(-1, -2);
-        }
-        layoutParams.topMargin = (-this.mHeaderHeight) + i;
-        this.mHeaderView.setLayoutParams(layoutParams);
-        if (!this.mIsRefreshing) {
-            if (i > this.mHeaderHeight && !this.mArrowUp) {
-                this.mArrow.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.rotate));
-                this.mText.setText("刷新数据");
-                rotateArrow();
-                this.mArrowUp = true;
-            } else if (i < this.mHeaderHeight && this.mArrowUp) {
-                this.mArrow.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.rotate));
-                this.mText.setText("下拉刷新");
-                rotateArrow();
-                this.mArrowUp = false;
-            }
-        }
-    }
-
-    private void startRefreshing() {
-        this.mArrow.setVisibility(View.INVISIBLE);
-        this.mProgress.setVisibility(View.VISIBLE);
-        this.mText.setText("加载...");
-        this.mIsRefreshing = true;
-        if (this.mListener != null) {
-            this.mListener.onRefresh(this);
-        }
+    public void setOnRefreshListener(final OnRefreshListener l) {
+        mListener = l;
     }
 
     public void completeRefreshing() {
-        this.mProgress.setVisibility(View.INVISIBLE);
-        this.mArrow.setVisibility(View.VISIBLE);
-        this.mHandler.sendMessage(this.mHandler.obtainMessage(1, this.mHeaderHeight, 0));
-        this.mIsRefreshing = false;
+        mProgress.setVisibility(View.INVISIBLE);
+        mArrow.setVisibility(View.VISIBLE);
+        mHandler.sendMessage(mHandler.obtainMessage(NORMAL, mHeaderHeight, 0));
+        mIsRefreshing = false;
         invalidateViews();
     }
 
-    public boolean dispatchTouchEvent(MotionEvent motionEvent) {
-        boolean z = false;
-        if (motionEvent.getAction() == 2 && getFirstVisiblePosition() == 0) {
-            float y = motionEvent.getY() - this.mHistoricalY;
-            int y2 = (((int) (motionEvent.getY() - this.mY)) / 2) + this.mInitialHeight;
-            if (y2 < 0) {
-                y2 = z;
-            }
-            if (Math.abs(this.mY - motionEvent.getY()) > ((float) ViewConfiguration.get(getContext()).getScaledTouchSlop())) {
-                if (y > 0.0f) {
-                    if (getChildAt(z).getTop() == 0) {
-                        setHeaderHeight(y2);
-                        motionEvent.setAction(3);
-                        this.mFlag = z;
+    @Override
+    public boolean onInterceptTouchEvent(final MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                mHandler.removeMessages(REFRESH);
+                mHandler.removeMessages(NORMAL);
+                mY = mHistoricalY = ev.getY();
+                if (mHeaderContainer.getLayoutParams() != null) {
+                    mInitialHeight = mHeaderContainer.getLayoutParams().height;
+                }
+                break;
+        }
+        return super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(final MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_MOVE:
+                mHistoricalTop = getChildAt(0).getTop();
+                break;
+            case MotionEvent.ACTION_UP:
+                if (!mIsRefreshing) {
+                    if (mArrowUp) {
+                        startRefreshing();
+                        mHandler.sendMessage(mHandler.obtainMessage(REFRESH, (int) (ev.getY() - mY)
+                                / 2 + mInitialHeight, 0));
+                    } else {
+                        if (getChildAt(0).getTop() == 0) {
+                            mHandler.sendMessage(mHandler.obtainMessage(NORMAL,
+                                    (int) (ev.getY() - mY) / 2 + mInitialHeight, 0));
+                        }
                     }
-                } else if (y < 0.0f && getChildAt(z).getTop() == 0) {
-                    setHeaderHeight(y2);
-                    if (!(getChildAt(1) == null || getChildAt(1).getTop() > 1 || this.mFlag)) {
-                        motionEvent.setAction(z);
-                        this.mFlag = true;
+                } else {
+                    mHandler.sendMessage(mHandler.obtainMessage(REFRESH, (int) (ev.getY() - mY) / 2
+                            + mInitialHeight, 0));
+                }
+                mFlag = false;
+                break;
+        }
+        return super.onTouchEvent(ev);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(final MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_MOVE && getFirstVisiblePosition() == 0) {
+            float direction = ev.getY() - mHistoricalY;
+            int height = (int) (ev.getY() - mY) / 2 + mInitialHeight;
+            if (height < 0) {
+                height = 0;
+            }
+
+            float deltaY = Math.abs(mY - ev.getY());
+            ViewConfiguration config = ViewConfiguration.get(getContext());
+            if (deltaY > config.getScaledTouchSlop()) {
+
+                // Scrolling downward
+                if (direction > 0) {
+                    // Refresh bar is extended if top pixel of the first item is
+                    // visible
+                    if (getChildAt(0).getTop() == 0) {
+                        if (mHistoricalTop < 0) {
+
+                            // mY = ev.getY(); // TODO works without
+                            // this?mHistoricalTop = 0;
+                        }
+
+                        // Extends refresh bar
+                        setHeaderHeight(height);
+
+                        // Stop list scroll to prevent the list from
+                        // overscrolling
+                        ev.setAction(MotionEvent.ACTION_CANCEL);
+                        mFlag = false;
+                    }
+                } else if (direction < 0) {
+                    // Scrolling upward
+
+                    // Refresh bar is shortened if top pixel of the first item
+                    // is
+                    // visible
+                    if (getChildAt(0).getTop() == 0) {
+                        setHeaderHeight(height);
+
+                        // If scroll reaches top of the list, list scroll is
+                        // enabled
+                        if (getChildAt(1) != null && getChildAt(1).getTop() <= 1 && !mFlag) {
+                            ev.setAction(MotionEvent.ACTION_DOWN);
+                            mFlag = true;
+                        }
                     }
                 }
             }
-            this.mHistoricalY = motionEvent.getY();
+
+            mHistoricalY = ev.getY();
         }
         try {
-            z = super.dispatchTouchEvent(motionEvent);
+            return super.dispatchTouchEvent(ev);
         } catch (Exception e) {
+            return false;
         }
-        return z;
     }
 
-    public boolean onInterceptTouchEvent(MotionEvent motionEvent) {
-        switch (motionEvent.getAction()) {
-            case 0:
-                this.mHandler.removeMessages(0);
-                this.mHandler.removeMessages(1);
-                float y = motionEvent.getY();
-                this.mHistoricalY = y;
-                this.mY = y;
-                if (this.mHeaderContainer.getLayoutParams() != null) {
-                    this.mInitialHeight = this.mHeaderContainer.getLayoutParams().height;
+    @Override
+    public boolean performItemClick(final View view, final int position, final long id) {
+        if (position == 0) {
+            // This is the refresh header element
+            return true;
+        } else {
+            return super.performItemClick(view, position - 1, id);
+        }
+    }
+
+    private void initialize() {
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(
+                Context.LAYOUT_INFLATER_SERVICE);
+        mHeaderContainer = inflater.inflate(R.layout.refreshable_list_header, null);
+        mHeaderView = mHeaderContainer.findViewById(R.id.refreshable_list_header);
+        mArrow = (ImageView) mHeaderContainer.findViewById(R.id.refreshable_list_arrow);
+        mProgress = (ProgressBar) mHeaderContainer.findViewById(R.id.refreshable_list_progress);
+        mText = (TextView) mHeaderContainer.findViewById(R.id.refreshable_list_text);
+        addHeaderView(mHeaderContainer);
+
+        mHeaderHeight = (int) (HEADER_HEIGHT_DP * getContext().getResources().getDisplayMetrics().density);
+        setHeaderHeight(0);
+    }
+
+    private void setHeaderHeight(final int height) {
+        if (height <= 1) {
+            mHeaderView.setVisibility(View.GONE);
+        } else {
+            mHeaderView.setVisibility(View.VISIBLE);
+        }
+
+        // Extends refresh bar
+        LayoutParams lp = (LayoutParams) mHeaderContainer.getLayoutParams();
+        if (lp == null) {
+            lp = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+        }
+        lp.height = height;
+        mHeaderContainer.setLayoutParams(lp);
+
+        // Refresh bar shows up from bottom to top
+        LinearLayout.LayoutParams headerLp = (LinearLayout.LayoutParams) mHeaderView
+                .getLayoutParams();
+        if (headerLp == null) {
+            headerLp = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT,
+                    LayoutParams.WRAP_CONTENT);
+        }
+        headerLp.topMargin = -mHeaderHeight + height;
+        mHeaderView.setLayoutParams(headerLp);
+
+        if (!mIsRefreshing) {
+            // If scroll reaches the trigger line, start refreshing
+            if (height > mHeaderHeight && !mArrowUp) {
+                mArrow.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.rotate));
+                mText.setText("Release to update");
+                rotateArrow();
+                mArrowUp = true;
+            } else if (height < mHeaderHeight && mArrowUp) {
+                mArrow.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.rotate));
+                mText.setText("Pull down to update");
+                rotateArrow();
+                mArrowUp = false;
+            }
+        }
+    }
+
+    private void rotateArrow() {
+        Drawable drawable = mArrow.getDrawable();
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
+                drawable.getIntrinsicHeight(), Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        canvas.save();
+        canvas.rotate(180.0f, canvas.getWidth() / 2.0f, canvas.getHeight() / 2.0f);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        drawable.draw(canvas);
+        canvas.restore();
+        mArrow.setImageBitmap(bitmap);
+    }
+
+    private void startRefreshing() {
+        mArrow.setVisibility(View.INVISIBLE);
+        mProgress.setVisibility(View.VISIBLE);
+        mText.setText("Loading...");
+        mIsRefreshing = true;
+
+        if (mListener != null) {
+            mListener.onRefresh(this);
+        }
+    }
+
+    private final Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(final Message msg) {
+            super.handleMessage(msg);
+
+            int limit = 0;
+            switch (msg.what) {
+                case REFRESH:
+                    limit = mHeaderHeight;
                     break;
+                case NORMAL:
+                    limit = 0;
+                    break;
+            }
+
+            // Elastic scrolling
+            if (msg.arg1 >= limit) {
+                setHeaderHeight(msg.arg1);
+                int displacement = (msg.arg1 - limit) / 10;
+                if (displacement == 0) {
+                    mHandler.sendMessage(mHandler.obtainMessage(msg.what, msg.arg1 - 1, 0));
+                } else {
+                    mHandler.sendMessage(mHandler.obtainMessage(msg.what, msg.arg1 - displacement,
+                            0));
                 }
-                break;
+            }
         }
-        return super.onInterceptTouchEvent(motionEvent);
+
+    };
+
+    public interface OnRefreshListener {
+        public void onRefresh(RefreshableListView listView);
     }
 
-    public boolean onTouchEvent(MotionEvent motionEvent) {
-        switch (motionEvent.getAction()) {
-            case 1:
-                if (this.mIsRefreshing) {
-                    this.mHandler.sendMessage(this.mHandler.obtainMessage(0, (((int) (motionEvent.getY() - this.mY)) / 2) + this.mInitialHeight, 0));
-                } else if (this.mArrowUp) {
-                    startRefreshing();
-                    this.mHandler.sendMessage(this.mHandler.obtainMessage(0, (((int) (motionEvent.getY() - this.mY)) / 2) + this.mInitialHeight, 0));
-                } else if (getChildAt(0).getTop() == 0) {
-                    this.mHandler.sendMessage(this.mHandler.obtainMessage(1, (((int) (motionEvent.getY() - this.mY)) / 2) + this.mInitialHeight, 0));
-                }
-                this.mFlag = false;
-                break;
-            case 2:
-                this.mHistoricalTop = getChildAt(0).getTop();
-                break;
-        }
-        return super.onTouchEvent(motionEvent);
-    }
-
-    public boolean performItemClick(View view, int i, long j) {
-        return i == 0 ? true : super.performItemClick(view, i - 1, j);
-    }
-
-    public void setOnRefreshListener(OnRefreshListener onRefreshListener) {
-        this.mListener = onRefreshListener;
-    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.uh.all.airpurifier">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.marz.ac.v1">
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
@@ -41,7 +41,7 @@
         <activity android:name="com.gizwits.framework.activity.onboarding.SoftApConfigActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.gizwits.framework.activity.help.AboutActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.gizwits.framework.activity.help.HelpActivity" android:screenOrientation="portrait"/>
-        <activity android:configChanges="keyboardHidden|orientation" android:name="zxing.CaptureActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.google.zxing.client.android.CaptureActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.gizwits.airpurifier.activity.control.AirPurActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.gizwits.airpurifier.activity.control.AlarmListActicity" android:screenOrientation="portrait"/>
         <activity android:name="com.gizwits.airpurifier.activity.control.CurveActivity" android:screenOrientation="portrait"/>

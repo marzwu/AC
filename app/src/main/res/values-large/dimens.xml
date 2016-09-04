@@ -18,4 +18,7 @@
     <dimen name="temp_height">21.0dip</dimen>
     <dimen name="bottom_btn_height">50.0dip</dimen>
     <dimen name="btn_text">17.0dip</dimen>
+
+    <dimen name="standard_padding">8dip</dimen>
+    <dimen name="half_padding">4dip</dimen>
 </resources>

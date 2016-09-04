@@ -48,7 +48,7 @@ import com.gizwits.framework.webservice.GetPMService;
 import com.gizwits.framework.webservice.LocationService;
 import com.gizwits.framework.widget.SlidingMenu;
 import com.gizwits.framework.widget.SlidingMenu.SlidingMenuListener;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xpg.common.system.IntentUtils;
 import com.xpg.common.useful.DateUtil;
 import com.xtremeprog.xpgconnect.XPGWifiDevice;
@@ -78,60 +78,10 @@ public class AirPurActivity extends BaseActivity implements OnClickListener, OnT
     private ConcurrentHashMap<String, Object> deviceDataMap;
     private LinearLayout functions_layout;
     Handler handler = new Handler() {
-        private static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$airpurifier$activity$control$AirPurActivity$handler_key;
-
-        static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$airpurifier$activity$control$AirPurActivity$handler_key() {
-            int[] iArr = $SWITCH_TABLE$com$gizwits$airpurifier$activity$control$AirPurActivity$handler_key;
-            if (iArr == null) {
-                iArr = new int[handler_key.values().length];
-                try {
-                    iArr[handler_key.ALARM.ordinal()] = 2;
-                } catch (NoSuchFieldError e) {
-                }
-                try {
-                    iArr[handler_key.DISCONNECTED.ordinal()] = 3;
-                } catch (NoSuchFieldError e2) {
-                }
-                try {
-                    iArr[handler_key.GET_STATUE.ordinal()] = 5;
-                } catch (NoSuchFieldError e3) {
-                }
-                try {
-                    iArr[handler_key.GET_STATUE_TIMEOUT.ordinal()] = 6;
-                } catch (NoSuchFieldError e4) {
-                }
-                try {
-                    iArr[handler_key.LOGIN_FAIL.ordinal()] = 9;
-                } catch (NoSuchFieldError e5) {
-                }
-                try {
-                    iArr[handler_key.LOGIN_START.ordinal()] = 7;
-                } catch (NoSuchFieldError e6) {
-                }
-                try {
-                    iArr[handler_key.LOGIN_SUCCESS.ordinal()] = 8;
-                } catch (NoSuchFieldError e7) {
-                }
-                try {
-                    iArr[handler_key.LOGIN_TIMEOUT.ordinal()] = 10;
-                } catch (NoSuchFieldError e8) {
-                }
-                try {
-                    iArr[handler_key.RECEIVED.ordinal()] = 4;
-                } catch (NoSuchFieldError e9) {
-                }
-                try {
-                    iArr[handler_key.UPDATE_UI.ordinal()] = 1;
-                } catch (NoSuchFieldError e10) {
-                }
-                $SWITCH_TABLE$com$gizwits$airpurifier$activity$control$AirPurActivity$handler_key = iArr;
-            }
-            return iArr;
-        }
 
         public void handleMessage(Message message) {
             super.handleMessage(message);
-            switch (AnonymousClass3.$SWITCH_TABLE$com$gizwits$airpurifier$activity$control$AirPurActivity$handler_key()[handler_key.values()[message.what].ordinal()]) {
+            switch (message.what) {
                 case 1:
                     break;
                 case 2:
@@ -621,7 +571,7 @@ public class AirPurActivity extends BaseActivity implements OnClickListener, OnT
                     AirPurActivity.this.pm25_tv.setText(jSONObject2.getString("pm2_5").split("\\.")[0]);
                     AirPurActivity.this.pm10_tv.setText(jSONObject2.getString("pm10").split("\\.")[0]);
                     int i = jSONObject2.getInt("aqi");
-                    Log.e("aqi", i);
+                    Log.e("aqi", i+"");
                     if (i > 0 && i <= 50) {
                         AirPurActivity.this.outdoorQuality_tv.setText("优");
                     } else if (50 < i && i <= 100) {

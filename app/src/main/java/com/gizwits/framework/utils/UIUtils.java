@@ -121,10 +121,16 @@ public class UIUtils {
         return new Rect(0, 0, i, i2);
     }
 
-    public static void initCache(Context context) {
-        mContext = context.getApplicationContext();
-        mResources = mContext.getResources();
-        mMemoryCache = new AnonymousClass1(((int) (Runtime.getRuntime().maxMemory() / 1024)) / 8);
+    public static void initCache(final Context context) {
+        UIUtils.mContext = context.getApplicationContext();
+        UIUtils.mResources = UIUtils.mContext.getResources();
+        UIUtils.mMemoryCache = new LruCache<String, Bitmap>((int)(Runtime.getRuntime().maxMemory() / 1024L) / 8) {
+
+            @Override
+            protected int sizeOf(final String s, final Bitmap bitmap) {
+                return bitmap.getByteCount() / 1024;
+            }
+        };
     }
 
     public static Bitmap loadBitmap(int i, int i2) {

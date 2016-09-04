@@ -12,7 +12,6 @@ import android.text.Layout.Alignment;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.util.FloatMath;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -20,7 +19,7 @@ import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -145,14 +144,14 @@ public class WheelView extends View {
         initResourcesIfNecessary();
         int maxTextLength = getMaxTextLength();
         if (maxTextLength > 0) {
-            this.itemsWidth = (int) (((float) maxTextLength) * FloatMath.ceil(Layout.getDesiredWidth("0", this.itemsPaint)));
+            this.itemsWidth = (int) (((float) maxTextLength) * Math.ceil(Layout.getDesiredWidth("0", this.itemsPaint)));
         } else {
             this.itemsWidth = 0;
         }
         this.itemsWidth += this.ADDITIONAL_ITEMS_SPACE;
         this.labelWidth = 0;
         if (this.label != null && this.label.length() > 0) {
-            this.labelWidth = (int) FloatMath.ceil(Layout.getDesiredWidth(this.label, this.valuePaint));
+            this.labelWidth = (int) Math.ceil(Layout.getDesiredWidth(this.label, this.valuePaint));
         }
         if (i2 == 1073741824) {
             maxTextLength = 1;
@@ -362,21 +361,37 @@ public class WheelView extends View {
     }
 
     private void justify() {
-        if (this.adapter != null) {
-            this.lastScrollY = 0;
-            int i = this.scrollingOffset;
-            int itemHeight = getItemHeight();
-            int i2 = i > 0 ? this.currentItem < this.adapter.getItemsCount() ? 1 : 0 : this.currentItem > 0 ? 1 : 0;
-            if ((this.isCyclic || r0 != 0) && Math.abs((float) i) > ((float) itemHeight) / 2.0f) {
-                i = i < 0 ? i + (itemHeight + 1) : i - (itemHeight + 1);
-            }
-            if (Math.abs(i) > 1) {
-                this.scroller.startScroll(0, 0, 0, i, SCROLLING_DURATION);
-                setNextMessage(1);
-                return;
-            }
-            finishScrolling();
+        if (this.adapter == null) {
+            return;
         }
+        this.lastScrollY = 0;
+        int scrollingOffset = this.scrollingOffset;
+        final int itemHeight = this.getItemHeight();
+        boolean b;
+        if (scrollingOffset > 0) {
+            if (this.currentItem < this.adapter.getItemsCount()) {
+                b = true;
+            } else {
+                b = false;
+            }
+        } else if (this.currentItem > 0) {
+            b = true;
+        } else {
+            b = false;
+        }
+        if ((this.isCyclic || b) && Math.abs((float) scrollingOffset) > itemHeight / 2.0f) {
+            if (scrollingOffset < 0) {
+                scrollingOffset += itemHeight + 1;
+            } else {
+                scrollingOffset -= itemHeight + 1;
+            }
+        }
+        if (Math.abs(scrollingOffset) > 1) {
+            this.scroller.startScroll(0, 0, 0, scrollingOffset, 400);
+            this.setNextMessage(1);
+            return;
+        }
+        this.finishScrolling();
     }
 
     private void setNextMessage(int i) {

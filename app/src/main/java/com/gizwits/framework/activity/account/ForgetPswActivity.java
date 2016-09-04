@@ -24,7 +24,7 @@ import android.widget.ToggleButton;
 import com.cgt.control.ActivityManager;
 import com.gizwits.framework.activity.BaseActivity;
 import com.gizwits.framework.widget.MyInputFilter;
-import com.uh.all.airpurifier.R;
+import com.marz.ac.v1.R;
 import com.xpg.common.useful.NetworkUtils;
 import com.xpg.common.useful.StringUtils;
 import com.xpg.ui.utils.ToastUtils;
@@ -46,32 +46,10 @@ public class ForgetPswActivity extends BaseActivity implements OnClickListener {
     private EditText etInputPsw;
     private EditText etName;
     Handler handler = new Handler() {
-        private static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$framework$activity$account$ForgetPswActivity$handler_key;
-
-        static /* synthetic */ int[] $SWITCH_TABLE$com$gizwits$framework$activity$account$ForgetPswActivity$handler_key() {
-            int[] iArr = $SWITCH_TABLE$com$gizwits$framework$activity$account$ForgetPswActivity$handler_key;
-            if (iArr == null) {
-                iArr = new int[handler_key.values().length];
-                try {
-                    iArr[handler_key.CHANGE_SUCCESS.ordinal()] = 2;
-                } catch (NoSuchFieldError e) {
-                }
-                try {
-                    iArr[handler_key.TICK_TIME.ordinal()] = 1;
-                } catch (NoSuchFieldError e2) {
-                }
-                try {
-                    iArr[handler_key.TOAST.ordinal()] = 3;
-                } catch (NoSuchFieldError e3) {
-                }
-                $SWITCH_TABLE$com$gizwits$framework$activity$account$ForgetPswActivity$handler_key = iArr;
-            }
-            return iArr;
-        }
 
         public void handleMessage(Message message) {
             super.handleMessage(message);
-            switch (AnonymousClass1.$SWITCH_TABLE$com$gizwits$framework$activity$account$ForgetPswActivity$handler_key()[handler_key.values()[message.what].ordinal()]) {
+            switch (message.what) {
                 case 1:
                     ForgetPswActivity forgetPswActivity = ForgetPswActivity.this;
                     forgetPswActivity.secondleft--;
@@ -283,7 +261,7 @@ public class ForgetPswActivity extends BaseActivity implements OnClickListener {
             this.handler.sendMessage(message);
             return;
         }
-        message = new Message();
+        Message message = new Message();
         message.what = handler_key.TOAST.ordinal();
         message.obj = str;
         this.handler.sendMessage(message);

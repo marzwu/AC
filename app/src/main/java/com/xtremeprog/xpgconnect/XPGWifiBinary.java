@@ -144,186 +144,64 @@ public class XPGWifiBinary {
     private XPGWifiBinary() {
     }
 
-    public static byte[] decode(String str) throws UnsupportedEncodingException {
-        StringBuffer stringBuffer = new StringBuffer();
-        byte[] bytes = str.getBytes("US-ASCII");
-        int length = bytes.length;
-        int i = 0;
-        while (i < length) {
-            byte b;
-            while (true) {
-                int i2 = i + 1;
-                byte b2 = base64DecodeChars[bytes[i]];
-                byte b3;
-                byte b4;
-                if (i2 >= length || b2 != (byte) -1) {
-                    if (b2 == (byte) -1) {
-                        break;
-                    }
-                    while (true) {
-                        i = i2 + 1;
-                        b3 = base64DecodeChars[bytes[i2]];
-                        if (i >= length || b3 != (byte) -1) {
-                            if (b3 == (byte) -1) {
-                                break;
-                            }
-                            stringBuffer.append((char) ((b2 << 2) | ((b3 & 48) >>> 4)));
-                            while (true) {
-                                i2 = i + 1;
-                                b4 = bytes[i];
-                                if (b4 != (byte) 61) {
-                                    return stringBuffer.toString().getBytes("iso8859-1");
-                                }
-                                b2 = base64DecodeChars[b4];
-                                if (i2 >= length || b2 != (byte) -1) {
-                                    if (b2 == (byte) -1) {
-                                        break;
-                                    }
-                                    stringBuffer.append((char) (((b3 & 15) << 4) | ((b2 & 60) >>> 2)));
-                                    while (true) {
-                                        i = i2 + 1;
-                                        b = bytes[i2];
-                                        if (b == (byte) 61) {
-                                            return stringBuffer.toString().getBytes("iso8859-1");
-                                        }
-                                        b = base64DecodeChars[b];
-                                        if (i >= length || b != (byte) -1) {
-                                            if (b == (byte) -1) {
-                                                break;
-                                            }
-                                            stringBuffer.append((char) (b | ((b2 & 3) << 6)));
-                                        } else {
-                                            i2 = i;
-                                        }
-                                    }
-                                    if (b == (byte) -1) {
-                                        break;
-                                    }
-                                    stringBuffer.append((char) (b | ((b2 & 3) << 6)));
-                                } else {
-                                    i = i2;
-                                }
-                            }
-                            if (b2 == (byte) -1) {
-                                stringBuffer.append((char) (((b3 & 15) << 4) | ((b2 & 60) >>> 2)));
-                                while (true) {
-                                    i = i2 + 1;
-                                    b = bytes[i2];
-                                    if (b == (byte) 61) {
-                                        b = base64DecodeChars[b];
-                                        if (i >= length) {
-                                            break;
-                                        }
-                                        break;
-                                    }
-                                    return stringBuffer.toString().getBytes("iso8859-1");
-                                    i2 = i;
-                                }
-                                if (b == (byte) -1) {
-                                    break;
-                                }
-                                stringBuffer.append((char) (b | ((b2 & 3) << 6)));
-                            } else {
-                                break;
-                            }
-                        }
-                        i2 = i;
-                    }
-                    if (b3 == (byte) -1) {
-                        stringBuffer.append((char) ((b2 << 2) | ((b3 & 48) >>> 4)));
-                        while (true) {
-                            i2 = i + 1;
-                            b4 = bytes[i];
-                            if (b4 != (byte) 61) {
-                                b2 = base64DecodeChars[b4];
-                                if (i2 >= length) {
-                                    break;
-                                }
-                                break;
-                            }
-                            return stringBuffer.toString().getBytes("iso8859-1");
-                            i = i2;
-                        }
-                        if (b2 == (byte) -1) {
-                            break;
-                        }
-                        stringBuffer.append((char) (((b3 & 15) << 4) | ((b2 & 60) >>> 2)));
-                        while (true) {
-                            i = i2 + 1;
-                            b = bytes[i2];
-                            if (b == (byte) 61) {
-                                b = base64DecodeChars[b];
-                                if (i >= length) {
-                                    break;
-                                }
-                                break;
-                            }
-                            return stringBuffer.toString().getBytes("iso8859-1");
-                            i2 = i;
-                        }
-                        if (b == (byte) -1) {
-                            break;
-                        }
-                        stringBuffer.append((char) (b | ((b2 & 3) << 6)));
-                    } else {
-                        break;
-                    }
-                }
-                i = i2;
+    public static byte[] decode(String paramString)
+            throws UnsupportedEncodingException {
+        StringBuffer localStringBuffer = new StringBuffer();
+        byte[] arrayOfByte1 = paramString.getBytes("US-ASCII");
+        int i = arrayOfByte1.length;
+        int k = 0;
+        for (int j = 0; ; j = k) {
+            if (j >= i) {
             }
-            if (b2 == (byte) -1) {
-                while (true) {
-                    i = i2 + 1;
-                    b3 = base64DecodeChars[bytes[i2]];
-                    if (i >= length) {
-                        break;
-                    }
-                    break;
-                    i2 = i;
-                }
-                if (b3 == (byte) -1) {
-                    break;
-                }
-                stringBuffer.append((char) ((b2 << 2) | ((b3 & 48) >>> 4)));
-                while (true) {
-                    i2 = i + 1;
-                    b4 = bytes[i];
-                    if (b4 != (byte) 61) {
-                        b2 = base64DecodeChars[b4];
-                        if (i2 >= length) {
-                            break;
+            int i4;
+            int i7;
+            do {
+                int i1;
+                do {
+                    int m;
+                    do {
+                        do {
+//                            return localStringBuffer.toString().getBytes("iso8859-1");
+                            do {
+                                j = k;
+                                byte[] arrayOfByte2 = base64DecodeChars;
+                                k = j + 1;
+                                m = arrayOfByte2[arrayOfByte1[j]];
+                            } while ((k < i) && (m == -1));
+                        } while (m == -1);
+                        do {
+                            int n = k;
+                            byte[] arrayOfByte3 = base64DecodeChars;
+                            k = n + 1;
+                            i1 = arrayOfByte3[arrayOfByte1[n]];
+                        } while ((k < i) && (i1 == -1));
+                    } while (i1 == -1);
+                    localStringBuffer.append((char) (m << 2 | (i1 & 0x30) >>> 4));
+                    do {
+                        int i2 = k;
+                        k = i2 + 1;
+                        int i3 = arrayOfByte1[i2];
+                        if (i3 == 61) {
+                            byte[] arrayOfByte5 = localStringBuffer.toString().getBytes("iso8859-1");
+                            return arrayOfByte5;
                         }
-                        break;
+                        i4 = base64DecodeChars[i3];
+                    } while ((k < i) && (i4 == -1));
+                } while (i4 == -1);
+                localStringBuffer.append((char) ((i1 & 0xF) << 4 | (i4 & 0x3C) >>> 2));
+                do {
+                    int i5 = k;
+                    k = i5 + 1;
+                    int i6 = arrayOfByte1[i5];
+                    if (i6 == 61) {
+                        byte[] arrayOfByte4 = localStringBuffer.toString().getBytes("iso8859-1");
+                        return arrayOfByte4;
                     }
-                    return stringBuffer.toString().getBytes("iso8859-1");
-                    i = i2;
-                }
-                if (b2 == (byte) -1) {
-                    stringBuffer.append((char) (((b3 & 15) << 4) | ((b2 & 60) >>> 2)));
-                    while (true) {
-                        i = i2 + 1;
-                        b = bytes[i2];
-                        if (b == (byte) 61) {
-                            b = base64DecodeChars[b];
-                            if (i >= length) {
-                                break;
-                            }
-                            break;
-                        }
-                        return stringBuffer.toString().getBytes("iso8859-1");
-                        i2 = i;
-                    }
-                    if (b == (byte) -1) {
-                        break;
-                    }
-                    stringBuffer.append((char) (b | ((b2 & 3) << 6)));
-                } else {
-                    break;
-                }
-            }
-            break;
+                    i7 = base64DecodeChars[i6];
+                } while ((k < i) && (i7 == -1));
+            } while (i7 == -1);
+            localStringBuffer.append((char) (i7 | (i4 & 0x3) << 6));
         }
-        return stringBuffer.toString().getBytes("iso8859-1");
     }
 
     public static String encode(byte[] bArr) {
