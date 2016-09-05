@@ -1,5 +1,6 @@
 package com.gizwits.airpurifier.activity.advanced;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.gizwits.framework.utils.DialogManager;
 import com.gizwits.framework.views.RoseBoxSeekBarView;
 import com.marz.ac.v1.R;
 
+@SuppressLint("ValidFragment")
 public class RoseboxFragment extends Fragment implements OnClickListener {
     private AdvancedActivity advancedActivity;
     private Button btnReset;

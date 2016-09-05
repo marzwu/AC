@@ -17,6 +17,7 @@ import com.marz.ac.v1.R;
 
 import java.lang.reflect.Method;
 
+@SuppressLint("ValidFragment")
 public class SensitivityFragment extends Fragment {
     private AdvancedActivity activity;
     private float position;

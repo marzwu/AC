@@ -1,5 +1,6 @@
 package com.gizwits.airpurifier.activity.advanced;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import com.marz.ac.v1.R;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressLint("ValidFragment")
 public class AlarmFragment extends Fragment {
     private AlarmListAdapter adapter;
     private ListView alarms_lv;

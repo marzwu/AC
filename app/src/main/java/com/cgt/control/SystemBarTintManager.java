@@ -170,11 +170,12 @@ public class SystemBarTintManager {
     }
 
     @TargetApi(19)
+    @SuppressWarnings("ResourceType")
     public SystemBarTintManager(Activity activity) {
+        TypedArray obtainStyledAttributes = activity.obtainStyledAttributes(new int[]{16843759, 16843760});
         Window window = activity.getWindow();
         ViewGroup viewGroup = (ViewGroup) window.getDecorView();
         if (VERSION.SDK_INT >= 19) {
-            TypedArray obtainStyledAttributes = activity.obtainStyledAttributes(new int[]{16843759, 16843760});
             try {
                 this.mStatusBarAvailable = obtainStyledAttributes.getBoolean(0, false);
                 this.mNavBarAvailable = obtainStyledAttributes.getBoolean(1, false);
@@ -264,7 +265,7 @@ public class SystemBarTintManager {
     public void setNavigationBarTintEnabled(boolean z) {
         this.mNavBarTintEnabled = z;
         if (this.mNavBarAvailable) {
-            this.mNavBarTintView.setVisibility(z ? 0 : 8);
+            this.mNavBarTintView.setVisibility(z ? View.VISIBLE : View.GONE);
         }
     }
 
@@ -296,7 +297,7 @@ public class SystemBarTintManager {
     public void setStatusBarTintEnabled(boolean z) {
         this.mStatusBarTintEnabled = z;
         if (this.mStatusBarAvailable) {
-            this.mStatusBarTintView.setVisibility(z ? 0 : 8);
+            this.mStatusBarTintView.setVisibility(z ? View.VISIBLE : View.GONE);
         }
     }
 
